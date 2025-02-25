@@ -1,11 +1,9 @@
-// src/app/auth/signup/ClientSignupForm.js
-
 'use client'
 
 import { useState } from 'react'
 import { signup } from '../actions'
 
-export default function ClientSignupForm() {
+export default function SignupClientForm({ setModalSignupIsOpen, setModalLoginIsOpen }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -21,8 +19,18 @@ export default function ClientSignupForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
+        <form onSubmit={handleSubmit} className="p-3 space-y-4 rounded-md bg-ThemeWhite">
+            <div
+                className="bg-white w-fit ml-auto px-2 rounded-md cursor-pointer hover:bg-ThemeA1"
+                onClick={() => setModalLoginIsOpen(false)}
+            >
+                <h1>X</h1>
+            </div>
+
+            <div className='text-center'>
+                <h1 className='text-4xl text-MarvelBlack'>Signup</h1>
+            </div>
+            <div className='text-black'>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                     Email
                 </label>
@@ -52,10 +60,19 @@ export default function ClientSignupForm() {
                 />
             </div>
 
-            <div className="flex justify-end">
+            <div className="flex">
+                <div className='flex items-center'>
+                    <p
+                        className='text-lg cursor-pointer'
+                        onClick={() => { setModalSignupIsOpen(false); setModalLoginIsOpen(true); }}
+                    >
+                        Login
+                    </p>
+                </div>
+
                 <button
                     type="submit"
-                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                    className="ml-auto px-4 py-2 bg-ThemeA1 text-white rounded-md hover:bg-ThemeA2 border border-MarvelBlack/20"
                 >
                     Sign Up
                 </button>

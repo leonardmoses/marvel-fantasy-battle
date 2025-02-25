@@ -1,9 +1,12 @@
 import Client from "./client"
 
-const Signup = () => {
+const Signup = ({ setModalSignupIsOpen, setModalLoginIsOpen }) => {
     return (
-        <div className="flex justify-center items-center h-screen">
-            <Client />
+        <div className="">
+            <Client
+                setModalSignupIsOpen={setModalSignupIsOpen}
+                setModalLoginIsOpen={setModalLoginIsOpen}
+            />
         </div>
     );
 }
