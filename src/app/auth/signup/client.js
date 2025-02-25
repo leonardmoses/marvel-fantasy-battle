@@ -6,20 +6,53 @@ import { signup } from '../actions'
 export default function SignupClientForm({ setModalSignupIsOpen, setModalLoginIsOpen }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState(null) // To store errors
+    const [successMessage, setSuccessMessage] = useState(null);
+
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+        setError(null) // Reset errors
+        setSuccessMessage(null); // Reset success message
+
 
         const formData = new FormData()
         formData.append('email', email)
         formData.append('password', password)
 
-        // Call the signup function from actions.js
-        await signup(formData)
-    }
+        try {
+            const response = await signup(formData)
 
+            if (!response || response?.error) {
+                setError(response?.error || 'Something went wrong. Please try again.');
+                setSuccessMessage(null);
+                return;
+            } else {
+                // If no error, show success message
+                setSuccessMessage('Signup successful! Redirecting...');
+
+                // Wait 3 seconds before hiding the success message and closing the modal
+                setTimeout(() => {
+                    setModalSignupIsOpen(false);
+                    setEmail('');
+                    setPassword('');
+
+                    window.location.href = '/'; // Forces a page reload and redirects to '/'
+                }, 3000);
+            }
+        } catch (err) {
+            setError('Something went wrong. Please try again.');
+            setSuccessMessage(null);
+        }
+    }
+    console.log(error)
     return (
         <form onSubmit={handleSubmit} className="p-3 space-y-4 rounded-md bg-ThemeWhite">
+            {successMessage && (
+                <p className="text-green-600 text-center">{successMessage}</p>
+            )}
+            {error && <p className="text-red-600 text-center">{error}</p>}
+
             <div
                 className="bg-white w-fit ml-auto px-2 rounded-md cursor-pointer hover:bg-ThemeA1"
                 onClick={() => setModalLoginIsOpen(false)}
