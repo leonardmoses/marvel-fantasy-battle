@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
+    "baseUrl": ".", // Point to the root directory
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["*"] // Alias @ to the root directory
     }
   }
 }
