@@ -2,6 +2,7 @@ import LayoutGeneral from "../components/LayoutGeneral";
 import Client from "./client"
 
 const GameBoard = () => {
+
     return (
         <main>
             <LayoutGeneral>

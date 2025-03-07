@@ -1,6 +1,11 @@
+'use client'
 import Image from "next/image";
+import { DraftValue } from "../db/draftValue"
 
 const GameboardClient = () => {
+
+    console.log(DraftValue)
+
     return (
         <main className="">
             <div className="w-fit ml-auto mr-20">
