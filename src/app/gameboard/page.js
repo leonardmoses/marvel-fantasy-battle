@@ -1,8 +1,13 @@
+import LayoutGeneral from "../components/LayoutGeneral";
+import Client from "./client"
+
 const GameBoard = () => {
     return (
-        <div>
-            <h1>Game Board</h1>
-        </div>
+        <main>
+            <LayoutGeneral>
+                <Client />
+            </LayoutGeneral>
+        </main>
     );
 }
 

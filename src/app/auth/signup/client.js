@@ -55,7 +55,7 @@ export default function SignupClientForm({ setModalSignupIsOpen, setModalLoginIs
 
             <div
                 className="bg-white w-fit ml-auto px-2 rounded-md cursor-pointer hover:bg-ThemeA1"
-                onClick={() => setModalLoginIsOpen(false)}
+                onClick={() => setModalSignupIsOpen(false)}
             >
                 <h1>X</h1>
             </div>
