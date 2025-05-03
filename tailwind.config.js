@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'ThemeGradient1': 'linear-gradient(to right, #5F6BE4, #E40985, #e62429)',
+        'ThemeGradient2': 'linear-gradient(to right, #e23636, #f8b700)',
+      },
       colors: {
         Primary: "#1B1B3A",
         Secondary: "#693668",
