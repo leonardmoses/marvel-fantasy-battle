@@ -2,19 +2,20 @@
 import Image from "next/image";
 import { DraftValue } from "../db/draftValue"
 import TeamAForm from "./components/TeamA";
+import TeamBForm from "./components/TeamB";
 const GameboardClient = () => {
 
-    // console.log(DraftValue)
-
     return (
-        <main className="border-t border-MarvelRed bg-Primary h-full">
-            <div className="w-fit ml-auto mr-20 relative">
-                <Image src="/images/Dice.png" alt="Dice" width={200} height={200} />
+        <main className="relative bg-MarvelBlack">
+            <div className="h-[1px] bg-gradient-to-r from-ThemeB5 via-ThemeB2 to-MarvelRed w-full absolute top-0 left-0" >
+
+                <div className="flex justify-around bg-green-900/70 w-11/12 mx-auto py-20 mt-10 border border-white/30 rounded-lg">
+                    <TeamAForm DraftValue={DraftValue} />
+                    <TeamBForm DraftValue={DraftValue} />
+                </div>
+
             </div>
-            <div>
-                <TeamAForm DraftValue={DraftValue}/>
-            </div>
-        </main>
+        </main >
     );
 }
 

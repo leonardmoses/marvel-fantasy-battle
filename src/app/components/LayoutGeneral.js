@@ -10,6 +10,10 @@ const LayoutGeneral = ({ children }) => {
                 </div>
             </div>
 
+            <div className="absolute left-20 top-5">
+                <Image src="/images/Dice.png" alt="Dice" width={200} height={200} />
+            </div>
+
             <div className="w-screen">
                 {children}
             </div>

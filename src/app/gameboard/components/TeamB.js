@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 
-const TeamAForm = ({ DraftValue }) => {
+const TeamBForm = ({ DraftValue }) => {
     //State for form to be submitted to supabase
     const [formData, setFormData] = useState({
         team: [],
@@ -67,7 +67,7 @@ const TeamAForm = ({ DraftValue }) => {
                         name="item"
                         value={selectedCharacter}
                         onChange={handleSelectChange}
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-ThemeB5"
+                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-ThemeB2"
                     >
                         <option value="">Select a Character</option>
                         {DraftValue.map((character, idx) => (
@@ -115,7 +115,7 @@ const TeamAForm = ({ DraftValue }) => {
 
             <button
                 type="submit"
-                className="w-full bg-ThemeB5 hover:bg-ThemeB5/70 text-white py-2 px-4 rounded mt-4"
+                className="w-full bg-ThemeB2 hover:bg-ThemeB2/70 text-white py-2 px-4 rounded mt-4"
             >
                 Save Team
             </button>
@@ -123,4 +123,4 @@ const TeamAForm = ({ DraftValue }) => {
     );
 };
 
-export default TeamAForm;
+export default TeamBForm;
