@@ -75,11 +75,11 @@ export const characters = [
     "Sky Manip": 1
   },
   {
-    "name": "Storm",
+    "Character": "Storm",
     "Melee Strength": 2,
     "H2H Skill": 3,
     "Proj Power": 6,
-    "Proj Dist/Acuracy": 7,
+    "Proj Dist/Accuracy": 7,
     "Armor": 3,
     "Healing": 3,
     "Quickness": 5,
@@ -94,10 +94,10 @@ export const characters = [
     "Magic Cast": 0,
     "Magic Resist": 3,
     "Absorption": 0,
-    "Water Manipulation": 4,
-    "Cold Manipulation": 5,
-    "Heat Manipulation": 3,
-    "Sky Manipulation": 9
+    "Water Manip": 4,
+    "Cold Manip": 5,
+    "Heat Manip": 3,
+    "Sky Manip": 9
   },
   {
     "Character": "Spider-Man",
@@ -150,11 +150,11 @@ export const characters = [
     "Sky Manip": 0
   },
   {
-    "name": "Magneto",
+    "Character": "Magneto",
     "Melee Strength": 3,
     "H2H Skill": 4,
     "Proj Power": 8,
-    "Proj Dist/Acuracy": 8,
+    "Proj Dist/Accuracy": 8,
     "Armor": 6,
     "Healing": 4,
     "Quickness": 5,
@@ -169,9 +169,9 @@ export const characters = [
     "Magic Cast": 0,
     "Magic Resist": 4,
     "Absorption": 2,
-    "Water Manipulation": 0,
-    "Cold Manipulation": 0,
-    "Heat Manipulation": 0,
-    "Sky Manipulation": 3
+    "Water Manip": 0,
+    "Cold Manip": 0,
+    "Heat Manip": 0,
+    "Sky Manip": 3
   }
 ]
