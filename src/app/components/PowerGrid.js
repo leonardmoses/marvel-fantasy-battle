@@ -1,12 +1,13 @@
 'use client'
 import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
+import ButtonClose from './ButtonClose';
 
 const PowerGrid = ({ DraftValue, characters, setShowPowerGrid }) => {
 
     const columns = Object.keys(characters[0]).map((key) => ({
         field: key,
         headerName: key,
-        width: 70,
+        width: 150,
     }));
 
     // Add `id` to each row (required by DataGrid)
@@ -16,14 +17,12 @@ const PowerGrid = ({ DraftValue, characters, setShowPowerGrid }) => {
     }));
 
     return (
-        <main className='fixed rounded-xl w-fit bg-white left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2'>
-            <div className='flex w-full'>
-                <button
-                    onClick={() => setShowPowerGrid(false)}
-                    className='ml-auto bg-MarvelRed hover:bg-white text-white hover:text-MarvelRed px-4 rounded-sm'
-                >
-                    close
-                </button>
+        <main className='fixed w-11/12 bg-white left-1/2 -translate-x-1/2 top-1/3 -translate-y-1/3 px-10 pb-10 pt-3'>
+            <div className='flex w-full pb-2'>
+                <ButtonClose setShowPowerGrid={setShowPowerGrid} />
+            </div>
+            <div>
+                <h1 className='bg-ThemeB2 text-center rounded-t-sm'>Power Grid</h1>
             </div>
             <DataGrid
                 rows={rows}
