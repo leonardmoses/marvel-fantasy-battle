@@ -7,10 +7,12 @@ import TeamAForm from "./components/TeamA";
 import TeamBForm from "./components/TeamB";
 import Rules from "../components/Rules"
 import PowerGrid from '../components/PowerGrid'
+import CalibrationGrid from '../components/CalibrationGrid'
 
 const GameboardClient = () => {
     const [showRules, setShowRules] = useState(false);
     const [showPowerGrid, setShowPowerGrid] = useState(false);
+    const [showCalibration, setShowCalibration] = useState(false);
 
     return (
         <main className="relative bg-MarvelBlack">
@@ -31,6 +33,12 @@ const GameboardClient = () => {
                     <button className="bg-ThemeB5 hover:bg-ThemeWhite text-ThemeWhite hover:text-ThemeB5 rounded-sm px-4">
                         <h1>Stages</h1>
                     </button>
+                    <button
+                        onClick={() => { setShowCalibration(true) }}
+                        className="bg-ThemeB5 hover:bg-ThemeWhite text-ThemeWhite hover:text-ThemeB5 rounded-sm px-4"
+                    >
+                        <h1>Calibration</h1>
+                    </button>
                 </div>
                 <div className="flex justify-around bg-ThemeGradient1 w-11/12 mx-auto py-20 mt-4 border border-white/30 rounded-lg">
                     <TeamAForm DraftValue={DraftValue} />
@@ -42,16 +50,21 @@ const GameboardClient = () => {
                         <ModalBackdrop setShowRules={setShowRules} />
                         <Rules setShowRules={setShowRules} />
                     </div>
-                    :
-                    null
+                    : null
                 }
                 {showPowerGrid ?
                     <div className="fixed">
                         <ModalBackdrop setShowPowerGrid={setShowPowerGrid} />
                         <PowerGrid DraftValue={DraftValue} characters={characters} setShowPowerGrid={setShowPowerGrid} />
                     </div>
-                    :
-                    null
+                    : null
+                }
+                {showCalibration ?
+                    <div className="fixed">
+                        <ModalBackdrop setShowCalibration={setShowCalibration} />
+                        <CalibrationGrid setShowCalibration={setShowCalibration} />
+                    </div>
+                    : null
                 }
 
             </div>
