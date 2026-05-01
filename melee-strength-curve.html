@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Melee Strength Curve — Marvel Fantasy Battle</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #111;
+      color: #eee;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      padding: 32px;
+    }
+    h1 {
+      color: #e62429;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .subtitle {
+      color: #666;
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+      margin-bottom: 32px;
+    }
+    .charts {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .chart-box {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 24px 24px 16px;
+    }
+    .chart-box h2 {
+      font-size: 0.75rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+    .chart-box.main { flex: 2; }
+    .chart-box.secondary { flex: 1; }
+
+    .legend {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 20px 24px;
+    }
+    .legend h2 {
+      font-size: 0.75rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+    .legend-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 10px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: #ccc;
+    }
+    .badge {
+      background: #e62429;
+      color: white;
+      font-weight: 700;
+      min-width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.75rem;
+    }
+    .badge.breaker { background: #5a0000; border: 1px solid #e62429; color: #e62429; }
+    .badge.max { background: #e62429; color: white; border: 2px solid #ff6b6b; }
+    .capacity { color: #888; font-size: 0.75rem; }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #2a2a2a;
+      margin: 10px 0;
+      grid-column: 1 / -1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Melee Strength Curve</h1>
+  <p class="subtitle">Marvel Fantasy Battle — Stat Calibration Reference · Standard Range 1–10 · Ceiling Breakers 11–20</p>
+
+  <div class="charts">
+    <div class="chart-box main">
+      <h2>Linear Scale — Shows curve shape</h2>
+      <canvas id="linearChart" height="260"></canvas>
+    </div>
+    <div class="chart-box secondary">
+      <h2>Log Scale — Shows tier distribution</h2>
+      <canvas id="logChart" height="260"></canvas>
+    </div>
+  </div>
+
+  <div class="legend">
+    <h2>Score Reference</h2>
+    <div class="legend-grid">
+
+      <div class="legend-item">
+        <div class="badge">1</div>
+        <div>
+          <div>Punisher, Nick Fury</div>
+          <div class="capacity">200–400 lbs · Normal human</div>
+        </div>
+      </div>
+
+      <div class="legend-item">
+        <div class="badge">2</div>
+        <div>
+          <div>Black Widow, Storm</div>
+          <div class="capacity">400–800 lbs · Peak athletic human</div>
+        </div>
+      </div>
+
+      <div class="legend-item">
+        <div class="badge">3</div>
+        <div>
+          <div>Cyclops, Nightcrawler, Magneto</div>
+          <div class="capacity">800–1,200 lbs · Average mutant</div>
+        </div>
+      </div>
+
+      <div class="legend-item">
+        <div class="badge">4</div>
+        <div>
+          <div>Cap, Wolverine, Colossus (human)</div>
+          <div class="capacity">~1 ton · Enhanced human / strong mutant</div>
+        </div>
+      </div>
+
+      <div class="legend-item">
+        <div class="badge" style="background:#333; color:#aaa;">5</div>
+        <div>
+          <div style="color:#666;">— gap —</div>
+          <div class="capacity">~3–5 tons · Notably superhuman</div>
+        </div>
+      </div>
+
+      <div class="legend-item">
+        <div class="badge">6</div>
+        <div>
+          <div>Beast, Sabretooth</div>
+          <div class="capacity">~10 tons · Strong superhuman</div>
+        </div>
+      </div>
+
+      <div class="legend-item">
+        <div class="badge" style="background:#333; color:#aaa;">7</div>
+        <div>
+          <div style="color:#666;">— gap —</div>
+          <div class="capacity">~25 tons · Powerful superhuman</div>
+        </div>
+      </div>
+
+      <div class="legend-item">
+        <div class="badge">8</div>
+        <div>
+          <div>Spider-Man, Venom</div>
+          <div class="capacity">~50 tons · Elite superhuman</div>
+        </div>
+      </div>
+
+      <div class="legend-item">
+        <div class="badge">9</div>
+        <div>
+          <div>Iron Man (suit)</div>
+          <div class="capacity">~75 tons · Near ceiling</div>
+        </div>
+      </div>
+
+      <div class="legend-item">
+        <div class="badge">10</div>
+        <div>
+          <div>Thor, Colossus (armored), Thing</div>
+          <div class="capacity">~100+ tons · Standard ceiling</div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="legend-item">
+        <div class="badge breaker">11–19</div>
+        <div>
+          <div>Juggernaut, Apocalypse</div>
+          <div class="capacity">~150–1,000 tons · Ceiling breakers</div>
+        </div>
+      </div>
+
+      <div class="legend-item">
+        <div class="badge max">20</div>
+        <div>
+          <div>Hulk</div>
+          <div class="capacity">Unlimited · Rage-scaled</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const labels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+    const tons   = [0.15, 0.3, 0.5, 1, 4, 10, 25, 50, 75, 100];
+
+    const pointColors = tons.map((_, i) => {
+      const gaps = [4, 6]; // score indices (0-based) that are gaps
+      return (i === 4 || i === 6) ? '#444' : '#e62429';
+    });
+
+    const baseDataset = {
+      label: 'Lifting Capacity (tons)',
+      data: tons,
+      borderColor: '#e62429',
+      backgroundColor: 'rgba(230, 36, 41, 0.08)',
+      pointBackgroundColor: pointColors,
+      pointBorderColor: '#fff',
+      pointBorderWidth: 1.5,
+      pointRadius: 6,
+      pointHoverRadius: 9,
+      fill: true,
+      tension: 0.35,
+    };
+
+    const baseScales = {
+      x: {
+        ticks: { color: '#888', font: { size: 11 } },
+        grid: { color: '#1f1f1f' },
+        title: { display: true, text: 'Score', color: '#555', font: { size: 11 } }
+      }
+    };
+
+    const baseOptions = {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#222',
+          borderColor: '#444',
+          borderWidth: 1,
+          titleColor: '#aaa',
+          bodyColor: '#eee',
+          callbacks: {
+            title: (items) => `Score ${items[0].label}`,
+            label: (ctx) => {
+              const v = ctx.parsed.y;
+              if (v < 1) return ` ${Math.round(v * 2000).toLocaleString()} lbs`;
+              if (v < 2) return ` ~${v} ton`;
+              return ` ~${v} tons`;
+            }
+          }
+        }
+      }
+    };
+
+    // Linear chart
+    new Chart(document.getElementById('linearChart'), {
+      type: 'line',
+      data: { labels, datasets: [{ ...baseDataset }] },
+      options: {
+        ...baseOptions,
+        scales: {
+          ...baseScales,
+          y: {
+            ticks: { color: '#888', font: { size: 11 },
+              callback: (v) => v >= 1 ? `${v}t` : `${Math.round(v*2000)}lb`
+            },
+            grid: { color: '#1f1f1f' },
+            title: { display: true, text: 'Lifting Capacity (tons)', color: '#555', font: { size: 11 } }
+          }
+        }
+      }
+    });
+
+    // Log chart
+    new Chart(document.getElementById('logChart'), {
+      type: 'line',
+      data: { labels, datasets: [{ ...baseDataset }] },
+      options: {
+        ...baseOptions,
+        scales: {
+          ...baseScales,
+          y: {
+            type: 'logarithmic',
+            ticks: {
+              color: '#888', font: { size: 11 },
+              callback: (v) => {
+                if ([0.1, 0.5, 1, 10, 100].includes(v)) {
+                  return v < 1 ? `${Math.round(v*2000)}lb` : `${v}t`;
+                }
+                return '';
+              }
+            },
+            grid: { color: '#1f1f1f' },
+            title: { display: true, text: 'Log scale', color: '#555', font: { size: 11 } }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
