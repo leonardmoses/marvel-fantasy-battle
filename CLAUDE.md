@@ -45,7 +45,27 @@ A fantasy sports-style Marvel character team drafting and battle game. Two playe
 ### Physical Combat
 
 **1. Melee Strength**
-Raw lifting/striking power only. No speed, no technique — purely how hard they hit or how much they lift. Hulk = 20 (ceiling breaker). Captain America = 4.
+Raw lifting/striking power only. No speed, no technique — purely how hard they hit or how much they lift.
+
+**Finalized scale with character placements:**
+
+| Score | Force | Tier | Characters |
+|-------|-------|------|------------|
+| 0 | 0 lbs | Ability absent | — |
+| 1 | 0–500 lbs | Peak human | Punisher, Nick Fury |
+| 2 | 500–1,000 lbs | Peak athletic human | Black Widow, Storm |
+| 3 | 1,000–2,000 lbs | Average mutant baseline | Cyclops, Nightcrawler, Magneto |
+| 4 | ~1–2 tons | Enhanced human / strong mutant | Cap, Wolverine, Colossus (human form) |
+| 5 | ~2–5 tons | Notably superhuman | *(unassigned)* |
+| 6 | ~10 tons | Strong superhuman | Beast, Sabretooth |
+| 7 | ~25–30 tons | Powerful superhuman | *(unassigned)* |
+| 8 | ~50 tons | Elite superhuman | Spider-Man, Venom |
+| 9 | ~75–80 tons | Near ceiling | Iron Man (with suit) |
+| 10 | 100+ tons | Standard ceiling | Thor, Colossus (armored), Thing |
+| 15 | ~500+ tons | Ceiling breaker | Apocalypse |
+| 20 | Unlimited | Rage-scaled | Hulk, Gladiator (Shi'ar) |
+
+Scoring notes: Age does not meaningfully reduce raw strength (Magneto = 3, same as Cyclops). Iron Man rated with suit active. Colossus has two scores: 4 (human form) and 10 (armored). Scores 5 and 7 still need characters placed.
 
 **2. H2H Skill**
 Hand-to-hand combat proficiency = technical training + accumulated experience. A 100+ year-old character trained in multiple disciplines (Wolverine) scores higher than a peak-trained but younger fighter. Covers barehands and melee weapons.
@@ -219,10 +239,27 @@ Project protective barriers covering teammates — not just oneself. Distinct fr
 
 ---
 
+## Calibration System
+
+Each stat is calibrated via the Calibration Guide modal in the app (accessible from the gameboard).
+
+### Data files
+- `src/app/db/calibrationData.js` — anchor table per stat. Supports `extraColumns` (e.g., "Force (In Weight)" for Melee Strength) and matching fields on each anchor row.
+- `src/app/db/calibrationCurveData.js` — curve config per stat. Each entry has: `yLabel`, `maxValue`, `formatGridLabel(val)` (formats the 10 auto-generated Y-axis ticks), `note`, and `points[]` with `{ score, value, display, char }`. `char: null` = unassigned gap (renders gray dot).
+
+### UI components
+- `CalibrationGrid.js` — modal with sidebar nav + DataGrid table + "View Curve / View Table" toggle.
+- `CalibrationCurve.js` — generic pure-SVG linear chart, no external library. VH = 580 (viewBox height). To add a curve to a new category: add an entry to `calibrationCurveData.js` — the toggle appears automatically.
+
+---
+
 ## What's Next
 
-Owner will provide 10–20 carefully mapped template characters with complete stats across all 25 categories. These serve as the calibration baseline for generating the remaining 100+ characters. Process:
-1. Analyze templates to internalize scaling logic
-2. Research each remaining character online
-3. Assign stats relative to template anchors
-4. Owner reviews and adjusts in batches of 20–30
+Stat calibration is in progress. Current state:
+- **Melee Strength** — scale and placements done. Scores 5 and 7 still need characters assigned.
+- **All other stats** — scale structure exists in `calibrationData.js` but character placements not yet done.
+
+Next steps:
+1. Fill scores 5 and 7 for Melee Strength
+2. Calibrate remaining stats the same way: define scale anchors, place characters, add `calibrationCurveData` entry
+3. Once calibration baselines are set, populate `marvelCharacters.js` with real stat data in batches of 20–30
