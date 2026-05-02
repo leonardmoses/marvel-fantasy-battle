@@ -47,19 +47,22 @@ export const calibrationData = [
     {
         category: "Proj Power",
         group: "Physical Combat",
-        description: "Raw destructive output of ranged/projectile attacks measured in RE (Relative Effectiveness — explosive power relative to TNT). How hard the blast hits — not accuracy.",
+        description: "Raw destructive output of ranged/projectile attacks at point of impact. Measured in TNT equivalent — how hard the blast hits, not how accurate or far it travels.",
+        extraColumns: [
+            { field: 'tnt', headerName: 'TNT Equivalent', width: 180 }
+        ],
         anchors: [
-            { id: 0, rating: 0, description: "No projectile ability", examples: "" },
-            { id: 1, rating: 1, description: "Some projectile force — enough to knock someone back a few feet", examples: "" },
-            { id: 2, rating: 2, description: "RE 0.22 — 1 frag grenade", examples: "" },
-            { id: 3, rating: 3, description: "RE 1 — 44 frag grenades", examples: "" },
-            { id: 4, rating: 4, description: "RE 10", examples: "" },
-            { id: 5, rating: 5, description: "RE 100", examples: "" },
-            { id: 6, rating: 6, description: "RE 1,000", examples: "" },
-            { id: 7, rating: 7, description: "Iron Man weapons level", examples: "Iron Man" },
-            { id: 8, rating: 8, description: "Gladiator max eye blast level", examples: "Gladiator (Shi'ar)" },
-            { id: 9, rating: 9, description: "Cyclops max optic blast level", examples: "Cyclops" },
-            { id: 10, rating: 10, description: "RE 5,000 — Hiroshima bomb equivalent", examples: "" },
+            { id: 0,  rating: 0,  tnt: "—",           description: "No projectile ability",                                                      examples: "" },
+            { id: 1,  rating: 1,  tnt: "~250 kg",     description: "Single large explosive charge — localized structural damage",              examples: "" },
+            { id: 2,  rating: 2,  tnt: "~1 ton",      description: "Large vehicle bomb — destroys a city block face",                         examples: "" },
+            { id: 3,  rating: 3,  tnt: "~5 tons",     description: "Multiple JDAM strikes — levels a large structure",                        examples: "" },
+            { id: 4,  rating: 4,  tnt: "~20 tons",    description: "MOAB (GBU-43) — destroys a large compound or full city block",            examples: "" },
+            { id: 5,  rating: 5,  tnt: "~80 tons",    description: "Multiple MOABs — levels a city district",                                 examples: "" },
+            { id: 6,  rating: 6,  tnt: "~300 tons",   description: "Massive conventional bombardment — levels a small town",                  examples: "" },
+            { id: 7,  rating: 7,  tnt: "~1.2 kt",     description: "Small tactical nuclear weapon",                                           examples: "" },
+            { id: 8,  rating: 8,  tnt: "~5 kt",       description: "Mid-range tactical nuclear weapon",                                       examples: "" },
+            { id: 9,  rating: 9,  tnt: "~8 kt",       description: "Large tactical nuclear weapon — destroys a major city district",          examples: "" },
+            { id: 10, rating: 10, tnt: "~15 kt",      description: "Hiroshima (Little Boy, 15 kt) — destroys an entire city",                  examples: "" },
         ]
     },
     {

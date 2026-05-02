@@ -34,7 +34,7 @@ A fantasy sports-style Marvel character team drafting and battle game. Two playe
 ## Data Files
 
 - `src/app/db/draftValue.js` — 130+ characters each with a Draft Value (1–5)
-- `src/app/db/marvelCharacters.js` — per-stat data. **The 7 characters currently here are unfinished test dummies — NOT finalized. Do not use as reference.**
+- `src/app/db/marvelCharacters.js` — per-stat data. 18 sample characters. **Melee Strength, H2H Skill, and Proj Power are calibrated. All other stats are still 0 placeholders.**
 
 ---
 
@@ -62,22 +62,83 @@ Raw lifting/striking power only. No speed, no technique — purely how hard they
 | 2 | 500–1,000 lbs | Peak athletic human | Black Widow, Storm |
 | 3 | 1,000–2,000 lbs | Average mutant baseline | Cyclops, Nightcrawler, Magneto |
 | 4 | ~1–2 tons | Enhanced human / strong mutant | Cap, Wolverine, Colossus (human form) |
-| 5 | ~2–5 tons | Notably superhuman | *(unassigned)* |
-| 6 | ~10 tons | Strong superhuman | Beast, Sabretooth |
-| 7 | ~25–30 tons | Powerful superhuman | *(unassigned)* |
-| 8 | ~50 tons | Elite superhuman | Spider-Man, Venom |
-| 9 | ~75–80 tons | Near ceiling | Iron Man (with suit) |
-| 10 | 100+ tons | Standard ceiling | Thor, Colossus (armored), Thing |
+| 5 | ~2–5 tons | Notably superhuman | Sabretooth |
+| 6 | ~10 tons | Strong superhuman | Beast |
+| 7 | ~25 tons | Powerful superhuman | Spider-Man |
+| 8 | ~50 tons | Elite superhuman | Rhino |
+| 9 | ~75 tons | Near ceiling | Iron Man (with suit), Colossus (armored) |
+| 10 | 100+ tons | Standard ceiling | Thor |
 | 15 | ~500+ tons | Ceiling breaker | Apocalypse |
-| 20 | Unlimited | Rage-scaled | Hulk, Gladiator (Shi'ar) |
+| 20 | Unlimited | Rage-scaled | Hulk |
+| 30 | Beyond unlimited | Cosmic power level | Gladiator (Shi'ar) |
 
-Scoring notes: Age does not meaningfully reduce raw strength (Magneto = 3, same as Cyclops). Iron Man rated with suit active. Colossus has two scores: 4 (human form) and 10 (armored). Scores 5 and 7 still need characters placed.
+Scoring notes: Age does not meaningfully reduce raw strength (Magneto = 3, same as Cyclops). Iron Man rated with suit active. Colossus has two scores: 4 (human form) and 9 (armored).
 
 **2. H2H Skill**
-Hand-to-hand combat proficiency = technical training + accumulated experience. A 100+ year-old character trained in multiple disciplines (Wolverine) scores higher than a peak-trained but younger fighter. Covers barehands and melee weapons.
+Hand-to-hand combat proficiency measured in **years-of-training equivalent**. Strictly technique and combat knowledge — does NOT factor in strength, speed, agility, or powers. Some characters are naturally gifted and represent a higher equivalent without literally having trained that long (Spider-Man's spider-sense counts here — no separate category exists for it).
+
+**No ceiling breakers for H2H Skill** — it is a multiplier category and ceiling breakers would make the math unmanageable. Scale is strictly 0–10.
+
+**Finalized scale:**
+
+| Score | Years Equiv. | Tier | Sample Characters |
+|-------|-------------|------|-------------------|
+| 0 | 0 | No training — instinctive brawling | — |
+| 1 | ~2 yrs | Street-level basics | Rhino, Juggernaut, Hulk |
+| 2 | ~5 yrs | Formal martial arts | Magneto, Iron Man |
+| 3 | ~10 yrs | Military combat / dedicated martial artist | Nick Fury, Storm, Colossus |
+| 4 | ~20 yrs | Professional career fighter, multiple disciplines | Cyclops |
+| 5 | ~30–40 yrs | Peak of a dedicated human lifetime | Black Widow, Beast |
+| 6 | ~50–75 yrs | Beyond a single human lifetime | Captain America, Spider-Man* |
+| 7 | ~100–200 yrs | Multi-generational warrior | Wolverine, Sabretooth |
+| 8 | ~400 yrs | Centuries of real warfare | *(open)* |
+| 9 | ~700 yrs | Near-millennium mastery | Thor |
+| 10 | ~1,000 yrs | Ancient warriors with millennia of combat | Apocalypse, Gladiator** |
+
+*Spider-Man rated 6 because spider-sense and mutation instinct function as combat instinct — no other stat captures this.
+**Gladiator rated 10 because Shi'ar Imperial Guard combat doctrine is assumed to transcend anything Earth-based.
 
 **3. Proj Power**
-Raw destructive output of ranged/projectile attacks. How hard does the blast hit — not accuracy. Cyclops and Iron Man are high. Spider-Man's webbing is low (utility, not destructive).
+Raw destructive output of ranged/projectile attacks at **point of impact**. Measured in TNT equivalent (RE Factor). How hard the blast hits — not accuracy, not area coverage. Beam vs. area distinction deferred; all attacks measured as point-of-impact force.
+
+**No ceiling breakers** — scale is strictly 0–10.
+
+**Finalized scale:**
+
+| Score | TNT Equiv | Anchor |
+|-------|-----------|--------|
+| 0 | — | No projectile ability |
+| 1 | ~250 kg | Single large explosive charge — localized structural damage |
+| 2 | ~1 ton | Large vehicle bomb — destroys a city block face |
+| 3 | ~5 tons | Multiple JDAM strikes — levels a large structure |
+| 4 | ~22 tons | MOAB (GBU-43) — destroys a large compound or full city block |
+| 5 | ~90 tons | Multiple MOABs — levels a city district |
+| 6 | ~350 tons | Massive conventional bombardment — levels a small town |
+| 7 | ~1.2 kt | Small tactical nuclear weapon |
+| 8 | ~3.5 kt | Mid-range tactical nuclear weapon |
+| 9 | ~8 kt | Large tactical nuclear weapon — destroys a major city district |
+| 10 | ~15 kt | Hiroshima (Little Boy) — destroys an entire city |
+
+**Finalized character placements (18 sample roster):**
+
+| Score | Characters |
+| ----- | ---------- |
+| 0 | Wolverine, Sabretooth, Beast, Rhino, Colossus, Juggernaut |
+| 1 | Nick Fury, Black Widow, Captain America, Spider-Man, Hulk |
+| 4 | Storm |
+| 6 | Iron Man, Thor |
+| 7 | Magneto |
+| 8 | Cyclops |
+| 9 | Gladiator |
+| 10 | Apocalypse |
+
+**Key calibration decisions and reasoning:**
+
+- **Lightning is lightning** — Storm and Thor both use atmospheric/divine lightning. The element doesn't arbitrarily scale because of who's throwing it. Thor's lightning is one step above Storm's (6 vs. 4) to acknowledge his amplified divine output and Mjolnir throws, but the same ceiling logic applies.
+- **Mjolnir is a melee weapon** — Thor's primary power is captured in Melee Strength. The Godblast is a one-shot desperation move, not repeatable combat output, so it does not set his Proj Power ceiling.
+- **Magneto's Asteroid M and planetary magnetic field feats belong to Magnetism**, not Proj Power. His Proj Power (7) reflects electromagnetic blasts and hypersonic metal projectiles in combat — powerful but one step below Cyclops's focused optic beam.
+- **Cyclops rated on demonstrated peak** (8), not theoretical max. His visor restricts output by choice; full-open would push toward 10 but that is not his combat-typical behavior.
+- **Characters with no innate ranged attack get 0** — pure melee fighters (Wolverine, Colossus, Juggernaut, etc.) do not get token values for throwing objects.
 
 **4. Proj Dist/Accuracy**
 How reliably a character lands their projectile on target. Cyclops scores high (beam goes exactly where eyes point). Iron Man scores high (targeting systems). Untrained or imprecise characters score low regardless of raw power.
@@ -255,17 +316,24 @@ Each stat is calibrated via the Calibration Guide modal in the app (accessible f
 
 ### UI components
 - `CalibrationGrid.js` — modal with sidebar nav + DataGrid table + "View Curve / View Table" toggle.
-- `CalibrationCurve.js` — generic pure-SVG linear chart, no external library. VH = 580 (viewBox height). To add a curve to a new category: add an entry to `calibrationCurveData.js` — the toggle appears automatically.
+- `CalibrationCurve.js` — generic pure-SVG linear chart, no external library. VH = 580 (viewBox height). Features: Y-axis zoom slider (scales from 0.1% of effectiveMax to effectiveMax — intentionally low to allow visibility into sub-conventional ranges like Proj Power scores 1–6), SVG clipPath clips dots/line/area to chart bounds, X-axis capped at score 10 (ceiling breakers excluded from graph), Y-axis ceiling derived from the score-10 point value (not `config.maxValue`). To add a curve to a new category: add an entry to `calibrationCurveData.js` — the toggle appears automatically.
 
 ---
 
 ## What's Next
 
 Stat calibration is in progress. Current state:
-- **Melee Strength** — scale and placements done. Scores 5 and 7 still need characters assigned.
+
+- **Melee Strength** — scale and placements done. All 18 sample characters assigned.
+- **H2H Skill** — scale and placements done. All 18 sample characters assigned.
+- **Proj Power** — scale and placements done. All 18 sample characters assigned.
 - **All other stats** — scale structure exists in `calibrationData.js` but character placements not yet done.
 
-Next steps:
-1. Fill scores 5 and 7 for Melee Strength
-2. Calibrate remaining stats the same way: define scale anchors, place characters, add `calibrationCurveData` entry
-3. Once calibration baselines are set, populate `marvelCharacters.js` with real stat data in batches of 20–30
+Next up: **Proj Dist/Accuracy** — calibrate scale anchors, place sample characters, verify `calibrationCurveData` entry.
+
+Calibration pattern (repeat for each stat):
+
+1. Define scale anchors with descriptions and examples in `calibrationData.js`
+2. Place sample characters, discuss and push back where needed
+3. Verify `calibrationCurveData.js` entry is consistent (values match displays, effectiveMax correct)
+4. Write finalized ratings into `marvelCharacters.js`

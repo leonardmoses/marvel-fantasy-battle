@@ -26,7 +26,7 @@ const CalibrationCurve = ({ config }) => {
     if (!config) return null
 
     const effectiveMax = Math.max(...config.points.filter(p => p.score <= 10).map(p => p.value))
-    const minZoom = Math.max(1, Math.round(effectiveMax * 0.05))
+    const minZoom = Math.max(1, Math.round(effectiveMax * 0.001))
     const step = Math.max(1, Math.round(effectiveMax / 200))
     const [zoomMax, setZoomMax] = useState(effectiveMax)
 
