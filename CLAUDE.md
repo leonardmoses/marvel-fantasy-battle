@@ -4,6 +4,12 @@ This file is auto-loaded by Claude Code at the start of every session. It contai
 
 ---
 
+## Canon Era — Source of Truth
+
+All character stat ratings are based on **1990s-era Marvel** — comics, animated series (X-Men TAS, Spider-Man TAS, etc.), and trading cards from that period. MCU film/TV portrayals are **explicitly excluded** as a reference point. Where a character's power level was inflated or changed significantly in later media, default to how they were depicted in the 90s.
+
+---
+
 ## What This App Is
 
 A fantasy sports-style Marvel character team drafting and battle game. Two players (Team A and Team B) each draft a roster of Marvel characters under a **15-point draft cap**, then their teams face off in a simulated battle. Think fantasy football but with Marvel heroes and villains.
