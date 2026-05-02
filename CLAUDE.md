@@ -19,22 +19,59 @@ A fantasy sports-style Marvel character team drafting and battle game. Two playe
 - **Framework:** Next.js 15 (App Router)
 - **UI:** Tailwind CSS with custom theme colors (ThemeB5, MarvelBlack, ThemeWhite, MarvelRed, etc.)
 - **Component Library:** MUI (Material UI) + MUI X DataGrid for the Power Grid table
-- **Backend:** Supabase (installed, not yet active — intentionally deferred)
+- **Backend:** Supabase — **auth (login/signup) is live** via server actions in `src/app/auth/actions.js` using `@supabase/ssr`. Team data save is still stubbed out. Env vars: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`. SSR client in `src/utils/supabase/server.js`.
 - **Styling:** Custom gradient variables defined in tailwind.config.js
 
 ## Current Development State
 
-- Draft UI is functional: two team forms (Team A, Team B), character dropdowns, running draft value totals, 15-point cap enforced
-- Power Grid modal: MUI DataGrid showing character stats
-- Rules modal: complete — game summary and 7-step How to Play written and live in `Rules.js`
-- Stages button: present but not wired up
-- Supabase save is stubbed out (commented out in handleSubmit)
+- **Home page (`/`)**: Marvel logo + "Enter" link to gameboard + Login/Signup modal buttons. Auth is wired: login redirects to `/gameboard`, signup shows success then redirects to `/`.
+- **Draft UI**: Two team forms (Team A, Team B), character dropdowns, running draft value totals. The 15-point cap shows a red warning when exceeded but does **not** block submission — it is displayed only, not enforced.
+- **Power Grid modal**: MUI DataGrid showing character stats from `marvelCharacters.js`. The `DraftValue` prop is passed to the component but **not rendered in the grid** — only the stats columns appear.
+- **Rules modal**: Complete — game summary and 7-step How to Play written and live in `Rules.js`.
+- **Calibration modal**: Wired and functional. Sidebar nav, anchor DataGrid, View Curve / View Table toggle.
+- **Stages button**: Present but has **no onClick handler** — completely unwired, mechanic design in progress.
+- **Supabase auth**: Live. Login/Signup forms call server actions that hit Supabase auth API.
+- **Supabase team save**: Still commented out in `TeamA.js` and `TeamB.js` `handleSubmit`.
 - **Build locally first, validate data and logic, then move to Supabase**
+
+## App Architecture
+
+**Routes:**
+
+- `/` — Home/landing page (`src/app/page.js`)
+- `/gameboard` — Draft board (`src/app/gameboard/page.js` → `client.js`)
+
+**Key components:**
+
+- `src/app/gameboard/client.js` — Gameboard state holder (modal open/close flags, renders TeamA/TeamB forms and all modals)
+- `src/app/gameboard/components/TeamA.js` — Team A draft form
+- `src/app/gameboard/components/TeamB.js` — Team B draft form. **Known bug: label text says "Team A" instead of "Team B".**
+- `src/app/components/LayoutGeneral.js` — Gameboard layout wrapper (Marvel logo + dice image)
+- `src/app/components/Rules.js` — Rules modal
+- `src/app/components/PowerGrid.js` — Power Grid modal (MUI DataGrid, stats only — no DraftValue column)
+- `src/app/components/CalibrationGrid.js` — Calibration modal (sidebar nav + DataGrid + optional curve toggle)
+- `src/app/components/CalibrationCurve.js` — Pure SVG chart (no external chart lib). VW=840, VH=580.
+- `src/app/components/ModalBackdrop.js` — Shared dark backdrop for Rules/PowerGrid/Calibration modals
+- `src/app/components/ButtonClose.js` — Shared close button (wired only for PowerGrid and Rules; CalibrationGrid has its own close button)
+- `src/app/auth/actions.js` — Server actions: `login()` → Supabase signIn → redirect `/gameboard`; `signup()` → Supabase signUp → return success
+- `src/utils/supabase/server.js` — SSR Supabase client factory
+
+**Known issues / gotchas:**
+
+- TeamB form label reads "Team A" (bug in `TeamB.js` line 64)
+- 15-point cap shows warning but does not block submission
+- `draftValue.js` has a "Rhyno" entry (typo) — `marvelCharacters.js` correctly spells it "Rhino"
+- `DraftValue` values in `draftValue.js` are **strings** (e.g., `"3"`), not numbers. The forms use `parseInt()` when summing totals.
+- Colossus is documented with dual scores (4 human form, 9 armored) but `marvelCharacters.js` stores only one value (9). No dual-form tracking exists in the data layer yet.
+- Calibration curve (`View Curve` button) only appears for stats that have an entry in `calibrationCurveData.js` — currently only: Melee Strength, H2H Skill, Proj Power, Proj Effective Range.
+
+---
 
 ## Data Files
 
-- `src/app/db/draftValue.js` — 130+ characters each with a Draft Value (1–5)
+- `src/app/db/draftValue.js` — 130+ characters each with a Draft Value (1–5, stored as strings)
 - `src/app/db/marvelCharacters.js` — per-stat data. 18 sample characters. **Melee Strength, H2H Skill, Proj Power, and Proj Effective Range are calibrated. All other stats are still 0 placeholders.**
+- `src/app/db/calibrationData.js` and `calibrationCurveData.js` are the **source of truth** for calibration values. If any value in this CLAUDE.md differs from those files, trust the files.
 
 ---
 
@@ -87,10 +124,10 @@ Hand-to-hand combat proficiency measured in **years-of-training equivalent**. St
 | 1 | ~2 yrs | Street-level basics | Rhino, Juggernaut, Hulk |
 | 2 | ~5 yrs | Formal martial arts | Magneto, Iron Man |
 | 3 | ~10 yrs | Military combat / dedicated martial artist | Nick Fury, Storm, Colossus |
-| 4 | ~20 yrs | Professional career fighter, multiple disciplines | Cyclops |
-| 5 | ~30–40 yrs | Peak of a dedicated human lifetime | Black Widow, Beast |
-| 6 | ~50–75 yrs | Beyond a single human lifetime | Captain America, Spider-Man* |
-| 7 | ~100–200 yrs | Multi-generational warrior | Wolverine, Sabretooth |
+| 4 | ~30 yrs | Professional career fighter, multiple disciplines | Cyclops |
+| 5 | ~50 yrs | Peak of a dedicated human lifetime | Black Widow, Beast |
+| 6 | ~100 yrs | Beyond a single human lifetime | Captain America, Spider-Man* |
+| 7 | ~200 yrs | Multi-generational warrior | Wolverine, Sabretooth |
 | 8 | ~400 yrs | Centuries of real warfare | *(open)* |
 | 9 | ~700 yrs | Near-millennium mastery | Thor |
 | 10 | ~1,000 yrs | Ancient warriors with millennia of combat | Apocalypse, Gladiator** |
@@ -394,10 +431,12 @@ Rosters are locked after the draft — no substitutions mid-match.
 
 ## Roster Decisions
 
-### Removed from roster:
-- **Ant-Man, Wasp, Yellowjacket** — Size manipulation (atomic-level infiltration) has no adequate counter in current stat system. Removed until elegant counter mechanic is designed.
+### Pending removal from roster
 
-### No stat column added for:
+- **Ant-Man, Wasp, Yellowjacket** — Size manipulation (atomic-level infiltration) has no adequate counter in current stat system. Decision: remove until elegant counter mechanic is designed. **They are still present in `draftValue.js`** and will appear in the draft dropdown until explicitly deleted from that file.
+
+### No stat column added for
+
 - **Power Copying (Rogue)** — Her permanent absorption of Carol Danvers' powers (super strength, high-speed flight) maps onto existing stats. Draft Value 4 reflects this.
 - **Probability Manipulation (Domino, Scarlet Witch)** — Too abstract. Scarlet Witch handled under Magic Cast.
 - **Duplication (Multiple Man)** — Too character-specific for a whole column.
