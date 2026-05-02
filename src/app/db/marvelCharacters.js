@@ -2,7 +2,7 @@ export const characters = [
   {
     "Character": "Nick Fury",
     "Melee Strength": 1,
-    "H2H Skill": 0,
+    "H2H Skill": 3,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -30,7 +30,7 @@ export const characters = [
   {
     "Character": "Black Widow",
     "Melee Strength": 2,
-    "H2H Skill": 0,
+    "H2H Skill": 5,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -58,7 +58,7 @@ export const characters = [
   {
     "Character": "Storm",
     "Melee Strength": 2,
-    "H2H Skill": 0,
+    "H2H Skill": 3,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -86,7 +86,7 @@ export const characters = [
   {
     "Character": "Cyclops",
     "Melee Strength": 3,
-    "H2H Skill": 0,
+    "H2H Skill": 4,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -114,7 +114,7 @@ export const characters = [
   {
     "Character": "Magneto",
     "Melee Strength": 3,
-    "H2H Skill": 0,
+    "H2H Skill": 2,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -142,7 +142,7 @@ export const characters = [
   {
     "Character": "Captain America",
     "Melee Strength": 4,
-    "H2H Skill": 0,
+    "H2H Skill": 6,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -170,7 +170,7 @@ export const characters = [
   {
     "Character": "Wolverine",
     "Melee Strength": 4,
-    "H2H Skill": 0,
+    "H2H Skill": 7,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -198,7 +198,7 @@ export const characters = [
   {
     "Character": "Sabretooth",
     "Melee Strength": 5,
-    "H2H Skill": 0,
+    "H2H Skill": 7,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -226,7 +226,7 @@ export const characters = [
   {
     "Character": "Beast",
     "Melee Strength": 6,
-    "H2H Skill": 0,
+    "H2H Skill": 5,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -254,7 +254,7 @@ export const characters = [
   {
     "Character": "Spider-Man",
     "Melee Strength": 7,
-    "H2H Skill": 0,
+    "H2H Skill": 6,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -282,7 +282,7 @@ export const characters = [
   {
     "Character": "Rhino",
     "Melee Strength": 8,
-    "H2H Skill": 0,
+    "H2H Skill": 1,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -310,7 +310,7 @@ export const characters = [
   {
     "Character": "Colossus",
     "Melee Strength": 9,
-    "H2H Skill": 0,
+    "H2H Skill": 3,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -338,7 +338,7 @@ export const characters = [
   {
     "Character": "Iron Man",
     "Melee Strength": 9,
-    "H2H Skill": 0,
+    "H2H Skill": 2,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -366,7 +366,7 @@ export const characters = [
   {
     "Character": "Thor",
     "Melee Strength": 10,
-    "H2H Skill": 0,
+    "H2H Skill": 9,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -394,7 +394,7 @@ export const characters = [
   {
     "Character": "Juggernaut",
     "Melee Strength": 10,
-    "H2H Skill": 0,
+    "H2H Skill": 1,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -422,7 +422,7 @@ export const characters = [
   {
     "Character": "Apocalypse",
     "Melee Strength": 15,
-    "H2H Skill": 0,
+    "H2H Skill": 10,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -450,7 +450,7 @@ export const characters = [
   {
     "Character": "Hulk",
     "Melee Strength": 20,
-    "H2H Skill": 0,
+    "H2H Skill": 1,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
@@ -478,7 +478,7 @@ export const characters = [
   {
     "Character": "Gladiator",
     "Melee Strength": 30,
-    "H2H Skill": 0,
+    "H2H Skill": 10,
     "Proj Power": 0,
     "Proj Dist/Accuracy": 0,
     "Armor": 0,
