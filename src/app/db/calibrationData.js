@@ -66,21 +66,25 @@ export const calibrationData = [
         ]
     },
     {
-        category: "Proj Dist/Accuracy",
+        category: "Proj Effective Range",
         group: "Physical Combat",
-        description: "How far the reach of their projectiles are and how accurately they can hit a moving target. Raw power means little if it cannot reach or land on the target.",
+        description: "Combined effective range and accuracy against a moving, evading target. Answers: does the blast get there and connect? Scale is 0–10 with no ceiling breakers — characters with no projectile ability (Proj Power = 0) receive 0 here as well.",
+        extraColumns: [
+            { field: 'range',    headerName: 'Effective Range',              width: 200 },
+            { field: 'accuracy', headerName: 'Accuracy vs. Moving Target',   width: 220 },
+        ],
         anchors: [
-            { id: 0, rating: 0, description: "No projectile ability", examples: "" },
-            { id: 1, rating: 1, description: "Adept human throwing accuracy", examples: "" },
-            { id: 2, rating: 2, description: "Advanced/enhanced human throwing accuracy", examples: "Captain America" },
-            { id: 3, rating: 3, description: "Superhuman throwing accuracy", examples: "Spider-Man" },
-            { id: 4, rating: 4, description: "Beyond throwing — range and accuracy up to 100 feet", examples: "" },
-            { id: 5, rating: 5, description: "Range and accuracy up to a few hundred feet", examples: "" },
-            { id: 6, rating: 6, description: "Range and accuracy up to a few thousand feet", examples: "" },
-            { id: 7, rating: 7, description: "Very long range — can hit a target up to a mile away", examples: "Storm (lightning)" },
-            { id: 8, rating: 8, description: "Long range, wide coverage, extremely accurate — can home in on targets", examples: "Iron Man (targeting system)" },
-            { id: 9, rating: 9, description: "Can hit whatever they can see", examples: "Cyclops" },
-            { id: 10, rating: 10, description: "Near 100% guaranteed hit", examples: "" },
+            { id: 0,  rating: 0,  range: "—",                       accuracy: "—",               description: "No projectile ability — does not exist for this character",                              examples: "" },
+            { id: 1,  rating: 1,  range: "< 20 ft",                 accuracy: "Poor",            description: "Wild throw — might hit a large, slow target at point-blank",                             examples: "Hulk" },
+            { id: 2,  rating: 2,  range: "< 50 ft",                 accuracy: "Fair",            description: "Can reliably hit large or slow targets; struggles against active evasion",                examples: "" },
+            { id: 3,  rating: 3,  range: "~100 ft",                 accuracy: "Moderate",        description: "Hits stationary or slow targets; unreliable against active evasion",                      examples: "Spider-Man, Storm, Captain America, Black Widow" },
+            { id: 4,  rating: 4,  range: "~300 ft",                 accuracy: "Good",            description: "Reliable at short range; can land shots at medium with setup time",                       examples: "Nick Fury" },
+            { id: 5,  rating: 5,  range: "~500 ft",                 accuracy: "Very Good",       description: "Consistent against moving targets at medium range",                                       examples: "Thor" },
+            { id: 6,  rating: 6,  range: "~1,000 ft",               accuracy: "High",            description: "Precision shots under pressure; can thread through obstacles",                            examples: "Magneto" },
+            { id: 7,  rating: 7,  range: "~1 mile",                 accuracy: "High",            description: "Long-range specialist — trained combatant with superhuman enhancement",                   examples: "Apocalypse" },
+            { id: 8,  rating: 8,  range: "1–3+ miles",              accuracy: "Near-surgical",   description: "Can target body parts at distance; compensates for active evasion",                      examples: "Gladiator" },
+            { id: 9,  rating: 9,  range: "Multi-mile / line-of-sight", accuracy: "Near-infallible", description: "Hits whatever they can aim at; only teleportation reliably escapes it",              examples: "Iron Man" },
+            { id: 10, rating: 10, range: "Any visible range",       accuracy: "Infallible",      description: "Mechanically perfect — projectile goes exactly where intended, no exceptions",           examples: "Cyclops" },
         ]
     },
     {

@@ -32,7 +32,7 @@ const CalibrationGrid = ({ setShowCalibration }) => {
 
             <div className='bg-ThemeGradient1 h-[2px] w-full mb-4' />
 
-            <div className='flex gap-4 flex-1 overflow-hidden'>
+            <div className='flex gap-4 flex-1 overflow-hidden min-h-0'>
 
                 {/* Sidebar */}
                 <div className='w-56 shrink-0 overflow-y-auto pr-2 flex flex-col gap-4'>
@@ -65,7 +65,7 @@ const CalibrationGrid = ({ setShowCalibration }) => {
                 <div className='w-[1px] bg-gray-200 shrink-0' />
 
                 {/* Content Panel */}
-                <div className='flex-1 flex flex-col overflow-hidden'>
+                <div className='flex-1 flex flex-col overflow-hidden min-h-0'>
                     <div className='mb-3 flex items-start justify-between gap-2'>
                         <div>
                             <h2 className='text-xl font-bold text-ThemeA5'>{selected.category}</h2>
@@ -87,7 +87,7 @@ const CalibrationGrid = ({ setShowCalibration }) => {
                             </button>
                         )}
                     </div>
-                    <div className='flex-1 overflow-auto'>
+                    <div className='flex-1 overflow-hidden flex flex-col min-h-0'>
                         {showCurve
                             ? <CalibrationCurve config={calibrationCurveData[selected.category]} />
                             : <DataGrid

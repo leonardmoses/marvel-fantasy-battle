@@ -26,7 +26,7 @@ A fantasy sports-style Marvel character team drafting and battle game. Two playe
 
 - Draft UI is functional: two team forms (Team A, Team B), character dropdowns, running draft value totals, 15-point cap enforced
 - Power Grid modal: MUI DataGrid showing character stats
-- Rules modal: placeholder Lorem Ipsum — real rules not written yet
+- Rules modal: complete — game summary and 7-step How to Play written and live in `Rules.js`
 - Stages button: present but not wired up
 - Supabase save is stubbed out (commented out in handleSubmit)
 - **Build locally first, validate data and logic, then move to Supabase**
@@ -34,7 +34,7 @@ A fantasy sports-style Marvel character team drafting and battle game. Two playe
 ## Data Files
 
 - `src/app/db/draftValue.js` — 130+ characters each with a Draft Value (1–5)
-- `src/app/db/marvelCharacters.js` — per-stat data. 18 sample characters. **Melee Strength, H2H Skill, and Proj Power are calibrated. All other stats are still 0 placeholders.**
+- `src/app/db/marvelCharacters.js` — per-stat data. 18 sample characters. **Melee Strength, H2H Skill, Proj Power, and Proj Effective Range are calibrated. All other stats are still 0 placeholders.**
 
 ---
 
@@ -140,10 +140,55 @@ Raw destructive output of ranged/projectile attacks at **point of impact**. Meas
 - **Cyclops rated on demonstrated peak** (8), not theoretical max. His visor restricts output by choice; full-open would push toward 10 but that is not his combat-typical behavior.
 - **Characters with no innate ranged attack get 0** — pure melee fighters (Wolverine, Colossus, Juggernaut, etc.) do not get token values for throwing objects.
 
-**4. Proj Dist/Accuracy**
-How reliably a character lands their projectile on target. Cyclops scores high (beam goes exactly where eyes point). Iron Man scores high (targeting systems). Untrained or imprecise characters score low regardless of raw power.
+**4. Proj Effective Range**
+Combined effective range and accuracy against a moving, evading target. Answers: *does the blast get there and connect?* Not damage — that's Proj Power. Characters with Proj Power = 0 automatically receive 0 here as well.
 
-*Paired sets: Melee Strength + H2H Skill / Proj Power + Proj Dist/Accuracy — raw power vs. precision.*
+**No ceiling breakers** — scale is strictly 0–10. (Same reasoning as H2H Skill — this is a hit-probability modifier.)
+
+The calibration table carries two extra columns: **Effective Range** and **Accuracy vs. Moving Target** — the two dimensions that combine into the single score. The curve Y-axis is effective range in feet (formatted as miles above 5,280 ft).
+
+**Finalized scale:**
+
+| Score | Effective Range | Accuracy vs. Moving Target | Description |
+| ----- | --------------- | -------------------------- | ----------- |
+| 0 | — | — | No projectile ability |
+| 1 | < 20 ft | Poor | Wild throw — might hit a large, slow target at point-blank |
+| 2 | < 50 ft | Fair | Can reliably hit large or slow targets; struggles against evasion |
+| 3 | ~100 ft | Moderate | Hits stationary or slow targets; unreliable against active evasion |
+| 4 | ~300 ft | Good | Reliable at short range; can land shots at medium with setup |
+| 5 | ~500 ft | Very Good | Consistent against moving targets at medium range |
+| 6 | ~1,000 ft | High | Precision shots under pressure; can thread through obstacles |
+| 7 | ~1 mile | High | Long-range specialist — trained combatant with superhuman enhancement |
+| 8 | 1–3+ miles | Near-surgical | Can target body parts at distance; compensates for active evasion |
+| 9 | Multi-mile / line-of-sight | Near-infallible | Hits whatever they can aim at; only teleportation reliably escapes it |
+| 10 | Any visible range | Infallible | Mechanically perfect — projectile goes exactly where intended, no exceptions |
+
+**Finalized character placements (18 sample roster):**
+
+| Score | Characters |
+| ----- | ---------- |
+| 0 | Wolverine, Sabretooth, Beast, Rhino, Colossus, Juggernaut |
+| 1 | Hulk |
+| 3 | Spider-Man, Storm, Captain America, Black Widow |
+| 4 | Nick Fury |
+| 5 | Thor |
+| 6 | Magneto |
+| 7 | Apocalypse |
+| 8 | Gladiator |
+| 9 | Iron Man |
+| 10 | Cyclops |
+
+**Key calibration decisions and reasoning:**
+
+- **Score 3 cluster** — Spider-Man (web fluid limits range to ~100 ft), Storm (electricity follows path of least resistance, not a beam — can't be surgical beyond ~100 ft), Captain America (shield throw is precise but still a thrown object, ~100 ft useful range), Black Widow (handgun for mobility — same range tier as Fury but handgun caps her further).
+- **Nick Fury at 4, not higher** — in combat he carries handguns or at best assault rifles, not sniper hardware. ~300 ft effective range.
+- **Thor at 5** — hammer throw and lightning are capable to ~500 ft. 1,000 ft would be pushing it.
+- **Magneto at 6** — has human-level vision. Shrapnel and EM blasts top out around 1,000 ft. His Asteroid M and planetary-scale feats belong to the Magnetism stat, not here.
+- **Gladiator at 8** — Shi'ar physiology assumed to include enhanced vision well beyond human level; eye beams follow suit.
+- **Iron Man at 9** — targeting computers and homing systems are near-infallible, but multi-mile range is the ceiling for 90s-era suit technology.
+- **Cyclops at 10** — the beam goes exactly where his eyes point. If he can see it, it hits. Only leaving his line of sight or teleporting away counters it.
+
+*Paired sets: Melee Strength + H2H Skill / Proj Power + Proj Effective Range — raw power vs. precision.*
 
 ---
 
@@ -275,6 +320,61 @@ Project protective barriers covering teammates — not just oneself. Distinct fr
 
 ---
 
+## Battle Resolution
+
+How a round is decided once both teams are drafted.
+
+### Battle Stages
+Each round is fought on a **Battle Stage** — a location with environmental conditions that buff or nerf specific stats for both teams equally. The stage is announced before each round.
+
+Key examples of stage logic:
+- **Indoor / underground** — neutralizes Sky Manip (Storm loses most of her weather control)
+- **Outdoor open** — amplifies Sky Manip; Flight Speed positional advantage increases
+- **Oceanic** — amplifies Water Manip
+- **High-altitude** — Flight Speed confers dominant positional advantage
+
+Stages reward roster versatility. A team hyper-specialized for one environment is fragile when the stage shifts against it. Stages button is present in the UI but not yet wired up — mechanic design in progress.
+
+### Team Synergies
+
+Stats interact within your own team:
+
+- **Leadership** — a high Leadership character actively boosts overall team effectiveness
+- **Telepathy (own telepath)** — adds to the team's cumulative Telepath Resistance pool, shielding all teammates
+- **Shield** — covers teammates against physical, projectile, and energy attacks
+- **Hunting/Tracking** — counters an opponent team that relies on Stealth/Deception
+
+### Opponent Nerfs
+
+Certain stat pairings create direct vulnerabilities across teams:
+
+- **High Has Metal + opponent Magnetism** — Wolverine, Colossus, and Iron Man become liabilities against Magneto
+- **Telepathy vs. Telepath Resist pool** — cumulative model; a strong resistance pool softens even a high Telepathy attacker
+- **Stealth/Deception vs. Hunting/Tracking** — an infiltrator is neutralized by a character with superior tracking
+
+### Team Score & Dice Roll
+
+After synergies, opponent interactions, and stage effects are all applied, each team receives a **Team Score** for that round. This score determines how many **dice** the team rolls:
+
+- Higher Team Score = more dice
+- Both teams roll all of their dice simultaneously
+- The **single highest die** from each team is compared — highest wins the round
+- Ties are re-rolled
+
+This model creates meaningful probability advantage for stronger teams while preserving underdog variance in any single round.
+
+### Match Format
+
+Agreed upon before the match begins (by the players or league commissioner):
+
+- **Best of 3** — first to 2 round wins
+- **Best of 5** — first to 3 round wins
+- **Best of 7** — first to 4 round wins
+
+Rosters are locked after the draft — no substitutions mid-match.
+
+---
+
 ## Stat Interaction Rules
 
 | Interaction | Rule |
@@ -327,9 +427,10 @@ Stat calibration is in progress. Current state:
 - **Melee Strength** — scale and placements done. All 18 sample characters assigned.
 - **H2H Skill** — scale and placements done. All 18 sample characters assigned.
 - **Proj Power** — scale and placements done. All 18 sample characters assigned.
+- **Proj Effective Range** — scale and placements done. All 18 sample characters assigned.
 - **All other stats** — scale structure exists in `calibrationData.js` but character placements not yet done.
 
-Next up: **Proj Dist/Accuracy** — calibrate scale anchors, place sample characters, verify `calibrationCurveData` entry.
+Next up: **Armor** — calibrate scale anchors, place sample characters, verify `calibrationCurveData` entry.
 
 Calibration pattern (repeat for each stat):
 

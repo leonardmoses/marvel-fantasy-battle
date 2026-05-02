@@ -41,8 +41,8 @@ const CalibrationCurve = ({ config }) => {
     })
 
     return (
-        <div className="w-full">
-            <svg viewBox={`0 0 ${VW} ${VH}`} width="100%" style={{ display: 'block' }}>
+        <div className="flex flex-col h-full min-h-0">
+            <svg viewBox={`0 0 ${VW} ${VH}`} width="100%" height="100%" style={{ display: 'block', flex: 1, minHeight: 0 }}>
                 <defs>
                     <clipPath id="chart-clip">
                         <rect x={ML} y={MT} width={PW} height={PH} />
