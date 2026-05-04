@@ -68,7 +68,7 @@ const CalibrationGrid = ({ setShowCalibration }) => {
                 <div className='flex-1 flex flex-col overflow-hidden min-h-0'>
                     <div className='mb-3 flex items-start justify-between gap-2'>
                         <div>
-                            <h2 className='text-xl font-bold text-ThemeA5'>{selected.category}</h2>
+                            <h2 className='text-xl font-bold text-ThemeA5'>{selected.fullName ?? selected.category}</h2>
                             <p className='text-sm text-gray-500 mt-1'>{selected.description}</p>
                             <p className='text-xs text-ThemeB2 mt-2 font-medium'>
                                 Scale: 0 = Ability absent &nbsp;·&nbsp; 1–10 Standard range &nbsp;·&nbsp; 1 is the average human baseline while 3 is the average superhero baseline &nbsp;·&nbsp; Above 10 reserved for characters who break the ceiling

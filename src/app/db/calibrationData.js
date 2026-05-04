@@ -1,6 +1,7 @@
 export const calibrationData = [
     {
         category: "Melee Strength",
+        fullName: "Melee Strength",
         group: "Physical Combat",
         description: "Raw lifting/striking power. Does not account for speed or technique — purely how hard they hit or how much they lift.",
         extraColumns: [
@@ -25,6 +26,7 @@ export const calibrationData = [
     },
     {
         category: "H2H Skill",
+        fullName: "Hand-to-Hand Skill",
         group: "Physical Combat",
         description: "Technical combat proficiency combining training and accumulated experience. Measured in years-of-training equivalent — some characters are naturally gifted and represent a higher equivalent without literally having trained that long. Scale is 0–10 with no ceiling breakers.",
         extraColumns: [
@@ -46,6 +48,7 @@ export const calibrationData = [
     },
     {
         category: "Proj Power",
+        fullName: "Projectile Power",
         group: "Physical Combat",
         description: "Raw destructive output of ranged/projectile attacks at point of impact. Measured in TNT equivalent — how hard the blast hits, not how accurate or far it travels.",
         extraColumns: [
@@ -67,6 +70,7 @@ export const calibrationData = [
     },
     {
         category: "Proj Effective Range",
+        fullName: "Projectile Effective Range",
         group: "Physical Combat",
         description: "Combined effective range and accuracy against a moving, evading target. Answers: does the blast get there and connect? Scale is 0–10 with no ceiling breakers — characters with no projectile ability (Proj Power = 0) receive 0 here as well.",
         extraColumns: [
@@ -89,6 +93,7 @@ export const calibrationData = [
     },
     {
         category: "Armor",
+        fullName: "Armor",
         group: "Durability & Recovery",
         description: "How much punishment a character can absorb before being incapacitated. Includes tough bodies, physical armor, or both.",
         anchors: [
@@ -99,6 +104,7 @@ export const calibrationData = [
     },
     {
         category: "Healing",
+        fullName: "Healing",
         group: "Durability & Recovery",
         description: "Speed and completeness of self-recovery from damage. Base = 3 for all characters — humans and mutants alike.",
         anchors: [
@@ -109,6 +115,7 @@ export const calibrationData = [
     },
     {
         category: "Quickness",
+        fullName: "Quickness",
         group: "Mobility",
         description: "Ground movement speed in combat. Dual value: offensive (strikes per second) and defensive (evasion). Characters with Teleportation receive 0.",
         anchors: [
@@ -119,6 +126,7 @@ export const calibrationData = [
     },
     {
         category: "Flight Speed",
+        fullName: "Flight Speed",
         group: "Mobility",
         description: "Airborne movement speed. 0 = cannot fly. 3D airspace makes targeting exponentially harder than ground targets.",
         anchors: [
@@ -129,6 +137,7 @@ export const calibrationData = [
     },
     {
         category: "Hunting/Tracking",
+        fullName: "Hunting/Tracking",
         group: "Tactical / Support",
         description: "Ability to locate, pursue, and close in on targets — or evade enemies. Covers enhanced senses, telepathic detection, and learned skills. Natural counter to Stealth/Deception.",
         anchors: [
@@ -139,6 +148,7 @@ export const calibrationData = [
     },
     {
         category: "Leadership",
+        fullName: "Leadership",
         group: "Tactical / Support",
         description: "Ability to lead and coordinate a team, boosting overall team effectiveness. No negatives — lone wolves operate independently.",
         anchors: [
@@ -149,6 +159,7 @@ export const calibrationData = [
     },
     {
         category: "Telekinesis",
+        fullName: "Telekinesis",
         group: "Psychic",
         description: "Mental object/person manipulation without physical contact. Rare stat — very few characters receive meaningful values. Teleportation is the only counter to a TK grab.",
         anchors: [
@@ -159,6 +170,7 @@ export const calibrationData = [
     },
     {
         category: "Telepathy",
+        fullName: "Telepathy",
         group: "Psychic",
         description: "Psychic attack/control of opponents' minds. Near-instant win condition at any range if it lands. One of the most powerful abilities in the system.",
         anchors: [
@@ -169,6 +181,7 @@ export const calibrationData = [
     },
     {
         category: "Telepath Resist",
+        fullName: "Telepathy Resistance",
         group: "Psychic",
         description: "Defense against Telepathy. Universal — nobody gets 0. Resolved cumulatively across the whole team vs. the attacker's Telepathy stat.",
         anchors: [
@@ -179,6 +192,7 @@ export const calibrationData = [
     },
     {
         category: "Magnetism",
+        fullName: "Magnetism",
         group: "Magnetic",
         description: "Control and manipulation of metal. Primarily Magneto's domain. Polaris and a few others have values.",
         anchors: [
@@ -189,6 +203,7 @@ export const calibrationData = [
     },
     {
         category: "Has Metal",
+        fullName: "Has Metal",
         group: "Magnetic",
         description: "How much metal is on/in the character. Functions as a vulnerability stat against Magneto. Everyone baseline = 1 (iron in blood).",
         anchors: [
@@ -199,6 +214,7 @@ export const calibrationData = [
     },
     {
         category: "Magic Cast",
+        fullName: "Magic Casting",
         group: "Magic",
         description: "Raw power level of spellcasting ability. Magic amplifies applicable existing stats. Full mechanic TBD.",
         anchors: [
@@ -209,6 +225,7 @@ export const calibrationData = [
     },
     {
         category: "Magic Resist",
+        fullName: "Magic Resistance",
         group: "Magic",
         description: "Resistance to magic effects. Universal — everyone has some value. Shield does not protect against magic except when it manifests as a physical projectile.",
         anchors: [
@@ -219,6 +236,7 @@ export const calibrationData = [
     },
     {
         category: "Absorption",
+        fullName: "Absorption",
         group: "Energy",
         description: "Absorb incoming energy attacks and convert them into a usable resource (capacitor mechanic). Distinct from Armor — Armor tanks, Absorption converts.",
         anchors: [
@@ -229,6 +247,7 @@ export const calibrationData = [
     },
     {
         category: "Water Manip",
+        fullName: "Water Manipulation",
         group: "Elemental",
         description: "Ability to control and manipulate water.",
         anchors: [
@@ -239,6 +258,7 @@ export const calibrationData = [
     },
     {
         category: "Cold Manip",
+        fullName: "Cold Manipulation",
         group: "Elemental",
         description: "Ability to control and manipulate cold/ice. Specialists score higher than multi-element characters.",
         anchors: [
@@ -249,6 +269,7 @@ export const calibrationData = [
     },
     {
         category: "Heat Manip",
+        fullName: "Heat Manipulation",
         group: "Elemental",
         description: "Ability to control and manipulate heat/fire. Specialists score higher than multi-element characters.",
         anchors: [
@@ -259,6 +280,7 @@ export const calibrationData = [
     },
     {
         category: "Sky Manip",
+        fullName: "Sky Manipulation",
         group: "Elemental",
         description: "Weather and atmospheric control. Context-dependent — powerful outdoors (especially near water), largely neutralized indoors.",
         anchors: [
@@ -269,6 +291,7 @@ export const calibrationData = [
     },
     {
         category: "Stealth/Deception",
+        fullName: "Stealth/Deception",
         group: "Special / Advanced",
         description: "Ability to conceal presence, deceive opponents, or operate undetected. Covers shapeshifting, invisibility, and trained infiltration. Natural counter: Hunting/Tracking.",
         anchors: [
@@ -279,6 +302,7 @@ export const calibrationData = [
     },
     {
         category: "Teleportation",
+        fullName: "Teleportation",
         group: "Special / Advanced",
         description: "Instantly move from one location to another without traversing space. Characters with this stat receive 0 in Quickness. Only escape from a Telekinesis grab.",
         anchors: [
@@ -289,6 +313,7 @@ export const calibrationData = [
     },
     {
         category: "Shield",
+        fullName: "Shield",
         group: "Special / Advanced",
         description: "Project protective barriers covering teammates. Distinct from Armor (personal durability). Does NOT protect against Telepathy or general Magic.",
         anchors: [
