@@ -118,4 +118,23 @@ export const calibrationCurveData = {
         ],
     },
 
+    'Quickness': {
+        yLabel: 'Atk / Second',
+        maxValue: 100,
+        formatGridLabel: (val) => `${val}/sec`,
+        note: 'Physical strikes only (punches, kicks, claws) — energy attack frequency is Proj Power · Ceiling breaker: Quicksilver (score 50, 500+/sec) — excluded from graph · Score 0 = teleportation characters (mutually exclusive)',
+        points: [
+            { score: 1,  value: 1,   display: '1/sec',    char: 'Juggernaut' },
+            { score: 2,  value: 2,   display: '~2/sec',   char: 'Nick Fury'  },
+            { score: 3,  value: 3,   display: '~3/sec',   char: 'Cyclops'    },
+            { score: 4,  value: 5,   display: '~5/sec',   char: 'Blk Widow'  },
+            { score: 5,  value: 8,   display: '~8/sec',   char: 'Cap'        },
+            { score: 6,  value: 15,  display: '~15/sec',  char: 'Beast'      },
+            { score: 7,  value: 25,  display: '~25/sec',  char: 'Sabretooth' },
+            { score: 8,  value: 40,  display: '~40/sec',  char: 'Spider-Man' },
+            { score: 9,  value: 65,  display: '~65/sec',  char: 'Thor'       },
+            { score: 10, value: 100, display: '~100/sec', char: 'Gladiator'  },
+        ],
+    },
+
 }

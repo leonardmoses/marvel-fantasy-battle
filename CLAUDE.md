@@ -338,7 +338,56 @@ Self-recovery speed from damage. Three-tier base structure: humans at 1, baselin
 ### Mobility
 
 **7. Quickness**
-Ground movement speed in combat. Dual value: offensive (more strikes per second) and defensive (evasion). **Characters with Teleportation receive 0 in Quickness — mutually exclusive stats.**
+Ground movement and combat speed — covers running, limb speed, and evasion in close quarters. Dual value: offensive (more strikes per second) and defensive (harder to hit). **Characters with Teleportation receive 0 in Quickness — mutually exclusive stats.** Scale is 0–10 with one ceiling breaker (Quicksilver at 50).
+
+Measured in **physical strikes per second** (punches, kicks, claws, melee blows). Does NOT measure energy attack frequency — optic beams, repulsors, and lightning are governed by Proj Power.
+
+**Finalized scale:**
+
+| Score | Phys. Atk / Sec | Description |
+| ----- | --------------- | ----------- |
+| 0 | — | Teleportation characters only — mutually exclusive with Quickness |
+| 1 | ~1/sec | Base human — one deliberate strike per second; slow, telegraphed, limited agility |
+| 2 | ~2/sec | Fast human — peak-conditioned non-specialist; basic combat tempo, no superhuman enhancement |
+| 3 | ~3/sec | Base mutant — mutant physiology edges above peak human; roughly world-class human fighter territory |
+| 4 | ~5/sec | Trained/conditioned — elite human conditioning or low-level mutation with a combat speed focus |
+| 5 | ~8/sec | Enhanced human — super-serum or mutation pushes clearly past any human limit |
+| 6 | ~15/sec | Very fast mutant — feral agility with enhanced reflexes and burst strike rate as a defining trait |
+| 7 | ~25/sec | Elite superhuman — Nightcrawler-tier combat tempo (calibration anchor; Nightcrawler himself scores 0) |
+| 8 | ~40/sec | Peak superhuman — spider-sense and mutation-enhanced reflexes produce a near-blur attack rate |
+| 9 | ~65/sec | Near-ceiling — divine or cosmic-tier physiology; strikes land faster than most opponents can track |
+| 10 | ~100/sec | Standard ceiling — fastest non-Quicksilver combatant; one hundred physical strikes per second |
+| 50 | 500+/sec | Ceiling breaker — categorically different league; effectively infinite relative to any score-10 opponent |
+
+**Finalized character placements (18 sample roster):**
+
+| Score | Characters |
+| ----- | ---------- |
+| 1 | Juggernaut |
+| 2 | Nick Fury |
+| 3 | Storm, Cyclops, Magneto, Iron Man, Colossus, Hulk |
+| 4 | Black Widow, Apocalypse |
+| 5 | Captain America, Rhino |
+| 6 | Beast, Wolverine |
+| 7 | Sabretooth |
+| 8 | Spider-Man |
+| 9 | Thor |
+| 10 | Gladiator |
+
+**Key calibration decisions and reasoning:**
+
+- **Juggernaut at 1** — his power is unstoppable momentum in one direction, not combat agility. He charges like a freight train but can't change direction, dodge, or move his limbs quickly. Slowest in the sample.
+- **Nick Fury at 2** — peak-conditioned SHIELD operative. Faster than average, notably slower than Black Widow. He's a tactician and gunfighter, not an acrobat.
+- **Score 3 cluster** — baseline mutant physiology across many characters. Cyclops, Storm, and Magneto are all physically unremarkable; their powers are energy/weather/magnetic, not speed. Iron Man's suit is a flight platform, not a ground-speed system. Colossus in armor form is heavier. Hulk is powerful but rage-fueled, not agile.
+- **Black Widow at 4** — user-confirmed anchor. Peak human conditioning with an agility and speed focus. Apocalypse also at 4: despite Celestial enhancements, he's never shown as a fast combatant in 90s material — his power is transformation and raw force.
+- **Captain America at 5** — super-soldier serum explicitly enhances speed; he's faster than any unenhanced human.
+- **Rhino at 5** — his charge speed is enhanced and a defining feature, but he's a straight-line charger, not agile. Pairs with Cap at this tier.
+- **Beast and Wolverine at 6** — Beast is the user-confirmed anchor for this tier. Wolverine matches it: feral burst speed and enhanced reflexes, but adamantium adds weight preventing him from reaching the next tier.
+- **Sabretooth at 7** — bigger and more physically imposing than Wolverine, but arguably slightly faster. His 90s TAS portrayal shows blisteringly fast movement in combat. Nightcrawler-tier speed (Nightcrawler himself gets 0 due to teleportation rule).
+- **Spider-Man at 8** — user-confirmed anchor. Spider-sense + mutation-enhanced reflexes place him at the biological speed ceiling.
+- **Thor at 9** — divine Asgardian physiology. Full combat speed well above peak superhuman; near-transonic in short bursts.
+- **Gladiator at 10** — Shi'ar cosmic physiology, standard ceiling. Fastest ground combatant in the sample.
+- **Quicksilver at 50** — ceiling breaker. So far beyond the 1–10 scale that he's untouchable in open combat. Excluded from the curve graph (X-axis capped at 10).
 
 **8. Flight Speed**
 Airborne movement speed, rated 1–10. 0 = cannot fly. Same dual offensive/defensive value as Quickness but amplified — 3D airspace makes targeting exponentially harder. Also confers high-ground offensive advantage. Future game logic will formalize this.
@@ -565,9 +614,10 @@ Stat calibration is in progress. Current state:
 - **Proj Effective Range** — scale and placements done. All 18 sample characters assigned.
 - **Armor** — scale and placements done. All 18 sample characters assigned.
 - **Healing** — scale and placements done. All 18 sample characters assigned.
+- **Quickness** — scale and placements done. All 18 sample characters assigned. Quicksilver is ceiling breaker at 50.
 - **All other stats** — scale structure exists in `calibrationData.js` but character placements not yet done.
 
-Next up: **Quickness** — calibrate scale anchors, place sample characters, verify `calibrationCurveData` entry.
+Next up: **Flight Speed** — calibrate scale anchors, place sample characters, add `calibrationCurveData` entry.
 
 Calibration pattern (repeat for each stat):
 
