@@ -283,7 +283,55 @@ Inherent physical durability — the toughness of the character's body, mutation
 - **Curve: Protective Factor = score²** — mathematically true parabola. Score 1 = 1×, Score 10 = 100×.
 
 **6. Healing**
-Self-recovery speed from damage. **Base = 3 for ALL characters** (humans and mutants alike — Marvel canon does not show mutants healing faster than humans consistently). Wolverine breaks the ceiling.
+Self-recovery speed from damage. Three-tier base structure: humans at 1, baseline mutants at 2, enhanced humans at 3. Active healing factors kick in at 4 and above. Apocalypse breaks the ceiling via molecular reconstruction.
+
+**Finalized scale:**
+
+| Score | Recovery (Deep Wound) | Description |
+| ----- | --------------------- | ----------- |
+| 0 | — | No biological healing — ability absent or permanently suppressed |
+| 1 | 2–3 weeks | Healthy human baseline — normal biological recovery |
+| 2 | 10–14 days | Baseline mutant — inherent physiology gives a slight edge over humans |
+| 3 | 5–7 days | Enhanced human — serum pushes healing above mutant baseline |
+| 4 | 2–4 days | Enhanced mutant physique — mutation amplifies recovery noticeably |
+| 5 | ~24–36 hours | Strong enhanced biology — clearly superhuman recovery rate |
+| 6 | ~12 hours | Active healing factor — major wounds close within hours |
+| 7 | ~5–6 hours | Strong healing factor — serious damage repaired in a few hours |
+| 8 | ~2–3 hours | Rapid regeneration — severe injuries recovered in hours |
+| 9 | ~1 hour | Near-peak healing factor — heals major wounds in under an hour |
+| 10 | ~15–30 min | Standard ceiling — serious wounds in minutes; catastrophic wounds in days vs. months for humans |
+| 15 | Seconds | Ceiling breaker — molecular reconstruction; near-instant healing of any wound |
+
+**Finalized character placements (18 sample roster):**
+
+| Score | Characters |
+| ----- | ---------- |
+| 1 | Nick Fury, Black Widow, Iron Man, Rhino, Juggernaut |
+| 2 | Cyclops, Storm, Magneto, Colossus |
+| 3 | Captain America |
+| 4 | Beast, Spider-Man |
+| 5 | Thor, Gladiator |
+| 6 | *(open)* |
+| 7 | *(open)* |
+| 8 | Sabretooth |
+| 9 | Wolverine |
+| 10 | Hulk |
+| 15 | Apocalypse |
+
+**Key calibration decisions and reasoning:**
+
+- **Humans at 1, baseline mutants at 2** — mutant physiology gives a slight inherent edge, but neither group has an active healing factor.
+- **Captain America at 3** — super-soldier serum pushes him above mutant baseline; he shakes off injuries that would sideline a normal soldier.
+- **Wolverine at 10 (standard ceiling)** — not instant healing. A wound that takes a human months takes Wolverine days; serious wounds heal in minutes. Top of the regular scale, not a ceiling breaker.
+- **Sabretooth at 9** — healing factor closely mirrors Wolverine's but slightly inferior; heals major wounds in about an hour.
+- **Apocalypse at 15 (ceiling breaker)** — molecular self-reconstruction via Celestial technology is categorically different from a biological healing factor. Near-instant healing of any wound.
+- **Hulk at 8** — gamma physiology provides rapid regeneration; serious wounds recover in a few hours during combat.
+- **Gladiator at 7** — Shi'ar biological engineering places his healing above Thor's; serious damage repaired in a few hours.
+- **Thor at 6** — Asgardian divine regeneration closes major wounds within hours, but is not a dedicated healing power.
+- **Spider-Man at 5** — mutation gives notably good healing; clearly superhuman recovery, not just a mild boost.
+- **Beast at 4** — enhanced physique amplifies recovery beyond Cap but without a dedicated healing factor.
+- **Juggernaut at 1** — near-invulnerability is Armor (Cyttorak's mystical protection). Once wounded, he heals at human baseline.
+- **Curve: perfect parabola y = score²** — same formula as Armor. Ceiling breakers excluded from graph (X-axis capped at 10).
 
 ---
 
@@ -516,9 +564,10 @@ Stat calibration is in progress. Current state:
 - **Proj Power** — scale and placements done. All 18 sample characters assigned.
 - **Proj Effective Range** — scale and placements done. All 18 sample characters assigned.
 - **Armor** — scale and placements done. All 18 sample characters assigned.
+- **Healing** — scale and placements done. All 18 sample characters assigned.
 - **All other stats** — scale structure exists in `calibrationData.js` but character placements not yet done.
 
-Next up: **Healing** — calibrate scale anchors, place sample characters, verify `calibrationCurveData` entry.
+Next up: **Quickness** — calibrate scale anchors, place sample characters, verify `calibrationCurveData` entry.
 
 Calibration pattern (repeat for each stat):
 

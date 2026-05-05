@@ -79,6 +79,26 @@ export const calibrationCurveData = {
         ],
     },
 
+    'Healing': {
+        yLabel: 'Healing Factor',
+        maxValue: 225,
+        formatGridLabel: (val) => `${val}×`,
+        note: 'Perfect parabola: y = score² · Score 1 = healthy human · Score 2 = baseline mutant · Score 10 = Hulk (standard ceiling) · Score 9 = Wolverine · Score 8 = Sabretooth · Ceiling breaker: Apocalypse (score 15, 225×) — near-instant molecular reconstruction',
+        points: [
+            { score: 1,  value: 1,   display: '1×',   char: 'Nick Fury'  },
+            { score: 2,  value: 4,   display: '4×',   char: 'Cyclops'    },
+            { score: 3,  value: 9,   display: '9×',   char: 'Cap'        },
+            { score: 4,  value: 16,  display: '16×',  char: 'Beast'      },
+            { score: 5,  value: 25,  display: '25×',  char: 'Thor'       },
+            { score: 6,  value: 36,  display: '36×',  char: null         },
+            { score: 7,  value: 49,  display: '49×',  char: null         },
+            { score: 8,  value: 64,  display: '64×',  char: 'Sabretooth' },
+            { score: 9,  value: 81,  display: '81×',  char: 'Wolverine'  },
+            { score: 10, value: 100, display: '100×', char: 'Hulk'       },
+            { score: 15, value: 225, display: '225×', char: 'Apocalypse' },
+        ],
+    },
+
     'Armor': {
         yLabel: 'Protective Factor',
         maxValue: 100,

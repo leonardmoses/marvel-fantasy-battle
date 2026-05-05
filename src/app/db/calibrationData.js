@@ -117,11 +117,23 @@ export const calibrationData = [
         category: "Healing",
         fullName: "Healing",
         group: "Durability & Recovery",
-        description: "Speed and completeness of self-recovery from damage. Base = 3 for all characters — humans and mutants alike.",
+        description: "Speed and completeness of self-recovery from damage. Three-tier base: humans at 1, baseline mutants at 2, enhanced humans at 3. Active healing factors kick in at 4+. Apocalypse is the only ceiling breaker via molecular reconstruction.",
+        extraColumns: [
+            { field: 'recoveryTime', headerName: 'Recovery (Deep Wound)', width: 220 }
+        ],
         anchors: [
-            { id: 0, rating: 0, description: "", examples: "" },
-            { id: 1, rating: 3, description: "Human / mutant baseline", examples: "" },
-            { id: 2, rating: 10, description: "Peak", examples: "" },
+            { id: 0,  rating: 0,  recoveryTime: "—",             description: "No biological healing — ability absent or permanently suppressed",                              examples: "" },
+            { id: 1,  rating: 1,  recoveryTime: "2–3 weeks",     description: "Healthy human baseline — normal biological recovery, no enhancement",                           examples: "Nick Fury, Black Widow, Iron Man" },
+            { id: 2,  rating: 2,  recoveryTime: "10–14 days",    description: "Baseline mutant — inherent physiology gives a slight edge over humans",                          examples: "Cyclops, Storm, Colossus" },
+            { id: 3,  rating: 3,  recoveryTime: "5–7 days",      description: "Enhanced human — serum or augmentation pushes healing above mutant baseline",                    examples: "Captain America" },
+            { id: 4,  rating: 4,  recoveryTime: "2–4 days",      description: "Enhanced physique — enhanced human or mutant biology amplifies recovery noticeably",             examples: "Beast, Spider-Man" },
+            { id: 5,  rating: 5,  recoveryTime: "~24–36 hours",  description: "Heightened healing — divine or advanced alien physiology produces clearly superhuman recovery",   examples: "Thor, Gladiator" },
+            { id: 6,  rating: 6,  recoveryTime: "~12 hours",     description: "Active healing — powerful physiology closes major wounds within hours",                          examples: "" },
+            { id: 7,  rating: 7,  recoveryTime: "~5–6 hours",    description: "Strong healing factor — serious damage repaired in a few hours",                                 examples: "" },
+            { id: 8,  rating: 8,  recoveryTime: "~2–3 hours",    description: "Rapid regeneration — severe injuries recovered in well under a day",                             examples: "Sabretooth" },
+            { id: 9,  rating: 9,  recoveryTime: "~1 hour",       description: "Near-peak healing factor — heals major wounds in under an hour",                                 examples: "Wolverine" },
+            { id: 10, rating: 10, recoveryTime: "~15–30 min",    description: "Standard ceiling — serious wounds in minutes; catastrophic wounds in days (vs. months for humans)", examples: "Hulk" },
+            { id: 11, rating: 15, recoveryTime: "Seconds",       description: "Ceiling breaker — molecular reconstruction; near-instant healing of any wound", examples: "Apocalypse" },
         ]
     },
     {
