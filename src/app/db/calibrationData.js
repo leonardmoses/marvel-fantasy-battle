@@ -95,11 +95,22 @@ export const calibrationData = [
         category: "Armor",
         fullName: "Armor",
         group: "Durability & Recovery",
-        description: "How much punishment a character can absorb before being incapacitated. Includes tough bodies, physical armor, or both.",
+        description: "Inherent physical durability — the toughness of the character's body, mutation, and natural defensive powers. Removable gear does not count. Iron Man's suit counts (it IS him). Magneto's EM bubble counts (deflection is his power). Humans always score below mutants regardless of gear.",
+        extraColumns: [
+            { field: 'source', headerName: 'Durability Source', width: 240 }
+        ],
         anchors: [
-            { id: 0, rating: 0, description: "", examples: "" },
-            { id: 1, rating: 3, description: "Average baseline", examples: "" },
-            { id: 2, rating: 10, description: "Peak", examples: "" },
+            { id: 0,  rating: 0,  source: "Unenhanced human body",                       description: "No enhancement — baseline human fragility; fully vulnerable to any attack",                                                            examples: "" },
+            { id: 1,  rating: 1,  source: "Peak human conditioning",                      description: "Trained human body, no mutation — conditioned but still fully vulnerable to superpowers",                                              examples: "Nick Fury, Black Widow" },
+            { id: 2,  rating: 2,  source: "Mutant physiology baseline",                   description: "Mutant body gives inherent toughness above human — no durability-focused power",                                                       examples: "Storm, Cyclops" },
+            { id: 3,  rating: 3,  source: "Super-soldier serum / light enhancement",      description: "Notably tougher than a mutant baseline — serum or equivalent pushes beyond normal human limits",                                      examples: "Captain America" },
+            { id: 4,  rating: 4,  source: "Enhanced mutant physique",                     description: "Enhanced body is a defining trait — can take serious superhuman hits before going down",                                               examples: "Beast, Spider-Man" },
+            { id: 5,  rating: 5,  source: "Feral / specialist durability",                description: "Durability is a primary feature — built to absorb punishment; conventional force rarely incapacitates",                               examples: "Sabretooth" },
+            { id: 6,  rating: 6,  source: "Extreme density / advanced natural armor",     description: "Very difficult to meaningfully hurt — concentrated superhuman force required to cause real damage",                                     examples: "" },
+            { id: 7,  rating: 7,  source: "Adamantium / engineered suit / EM shielding",  description: "Near the top tier — purpose-built to be nearly unstoppable; physical force alone rarely halts them",                                  examples: "Wolverine, Rhino, Iron Man, Magneto" },
+            { id: 8,  rating: 8,  source: "Celestial / molecular enhancement",            description: "Near-indestructible — only extreme cosmic-adjacent force causes real damage",                                                           examples: "Apocalypse" },
+            { id: 9,  rating: 9,  source: "Divine / gamma / organic steel physiology",    description: "Near-ceiling — requires transcendent physical force; Asgardian divinity, gamma physiology, organic steel",                            examples: "Thor, Hulk, Colossus" },
+            { id: 10, rating: 10, source: "Mystical / cosmic physical armor",             description: "Standard ceiling — absorbs direct hits from Thor and Hulk-tier force; only non-physical bypasses (telepathy, specific magic) can stop them", examples: "Juggernaut, Gladiator" },
         ]
     },
     {

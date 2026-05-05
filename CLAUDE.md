@@ -63,14 +63,14 @@ A fantasy sports-style Marvel character team drafting and battle game. Two playe
 - `draftValue.js` has a "Rhyno" entry (typo) — `marvelCharacters.js` correctly spells it "Rhino"
 - `DraftValue` values in `draftValue.js` are **strings** (e.g., `"3"`), not numbers. The forms use `parseInt()` when summing totals.
 - Colossus is documented with dual scores (4 human form, 9 armored) but `marvelCharacters.js` stores only one value (9). No dual-form tracking exists in the data layer yet.
-- Calibration curve (`View Curve` button) only appears for stats that have an entry in `calibrationCurveData.js` — currently only: Melee Strength, H2H Skill, Proj Power, Proj Effective Range.
+- Calibration curve (`View Curve` button) only appears for stats that have an entry in `calibrationCurveData.js` — currently only: Melee Strength, H2H Skill, Proj Power, Proj Effective Range, Armor.
 
 ---
 
 ## Data Files
 
 - `src/app/db/draftValue.js` — 130+ characters each with a Draft Value (1–5, stored as strings)
-- `src/app/db/marvelCharacters.js` — per-stat data. 18 sample characters. **Melee Strength, H2H Skill, Proj Power, and Proj Effective Range are calibrated. All other stats are still 0 placeholders.**
+- `src/app/db/marvelCharacters.js` — per-stat data. 18 sample characters. **Melee Strength, H2H Skill, Proj Power, Proj Effective Range, and Armor are calibrated. All other stats are still 0 placeholders.**
 - `src/app/db/calibrationData.js` and `calibrationCurveData.js` are the **source of truth** for calibration values. If any value in this CLAUDE.md differs from those files, trust the files.
 
 ---
@@ -232,7 +232,55 @@ The calibration table carries two extra columns: **Effective Range** and **Accur
 ### Durability & Recovery
 
 **5. Armor**
-Total damage absorption — naturally tough bodies, actual armor, or both. How much punishment they can take.
+Inherent physical durability — the toughness of the character's body, mutation, and natural defensive powers. Removable gear does not count. Iron Man's suit counts (it IS him). Magneto's EM bubble counts (deflection is his power). Humans always score below mutants regardless of what gear they carry. Extra column: **Durability Source**. Curve is a perfect parabola (Protective Factor = score²).
+
+**No ceiling breakers** — scale is strictly 0–10. Score 10 ceiling defined as: survives direct hits from Thor and Hulk-tier force; only non-physical bypasses (telepathy, specific magic) can stop them.
+
+**Finalized scale:**
+
+| Score | Durability Source | Description |
+| ----- | ----------------- | ----------- |
+| 0 | Unenhanced human body | No enhancement — fully vulnerable to any attack |
+| 1 | Peak human conditioning | Trained body, no mutation — still fully vulnerable to superpowers |
+| 2 | Mutant physiology baseline | Mutant body gives inherent toughness above human — no durability-focused power |
+| 3 | Super-soldier serum / light enhancement | Notably tougher than a mutant baseline |
+| 4 | Enhanced mutant physique | Enhanced body is a defining trait — takes serious superhuman hits before going down |
+| 5 | Feral / specialist durability | Durability is a primary feature — built to absorb punishment |
+| 6 | Extreme density / advanced natural armor | Very difficult to meaningfully hurt — concentrated superhuman force required |
+| 7 | Adamantium / engineered suit / EM shielding | Near the top tier — purpose-built to be nearly unstoppable |
+| 8 | Celestial / molecular enhancement | Near-indestructible — only extreme cosmic-adjacent force causes real damage |
+| 9 | Divine / gamma / organic steel physiology | Near-ceiling — requires transcendent physical force to slow them |
+| 10 | Mystical / cosmic physical armor | Standard ceiling — absorbs direct Thor/Hulk-tier hits; only non-physical bypasses apply |
+
+**Finalized character placements (18 sample roster):**
+
+| Score | Characters |
+| ----- | ---------- |
+| 1 | Nick Fury, Black Widow |
+| 2 | Storm, Cyclops |
+| 3 | Captain America |
+| 4 | Beast, Spider-Man |
+| 5 | Sabretooth |
+| 7 | Wolverine, Rhino, Iron Man, Magneto |
+| 8 | Apocalypse |
+| 9 | Thor, Hulk, Colossus |
+| 10 | Juggernaut, Gladiator |
+
+**Key calibration decisions and reasoning:**
+
+- **Humans (Fury, Widow) at 1** — gear doesn't count; peak conditioning without enhancement is the floor above 0.
+- **Mutant baseline (Storm, Cyclops) at 2** — mutant physiology is inherently tougher than peak human, even without a durability-focused power.
+- **Cap at 3** — super-soldier serum pushes him above a mutant baseline, but he's human-framed and gets genuinely hurt.
+- **Beast and Spider-Man at 4** — enhanced physique is a defining trait for both; they take serious superhuman punishment.
+- **Sabretooth at 5** — feral durability is a primary feature, not a side effect; he's built to absorb punishment.
+- **Score 6 gap** — no sample character lands here cleanly.
+- **Wolverine at 7** — adamantium skeleton and density make him nearly unstoppable physically; flesh takes damage but the structure beneath cannot be broken.
+- **Magneto at 7** — EM bubble is a strong active defense; the user confirmed he should be very high on this list. Peers with Wolverine, Rhino, and Iron Man at the "purpose-built to be nearly unstoppable" tier.
+- **Iron Man at 7** — the suit IS Iron Man; 90s Stark armor is exceptional engineered protection.
+- **Rhino at 7** — bonded hide is permanent and his defining physical trait.
+- **Colossus at 9** — organic steel (armored form). Bullets bounce off; requires sustained cosmic-tier force.
+- **Score 10 ceiling anchored to Juggernaut** — Cyttorak's mystical armor survives direct hits from Thor and Hulk. Only telepathy or magic targeting the Cyttorak bond specifically can bypass it. Gladiator matches this ceiling via Shi'ar cosmic physiology.
+- **Curve: Protective Factor = score²** — mathematically true parabola. Score 1 = 1×, Score 10 = 100×.
 
 **6. Healing**
 Self-recovery speed from damage. **Base = 3 for ALL characters** (humans and mutants alike — Marvel canon does not show mutants healing faster than humans consistently). Wolverine breaks the ceiling.
@@ -467,9 +515,10 @@ Stat calibration is in progress. Current state:
 - **H2H Skill** — scale and placements done. All 18 sample characters assigned.
 - **Proj Power** — scale and placements done. All 18 sample characters assigned.
 - **Proj Effective Range** — scale and placements done. All 18 sample characters assigned.
+- **Armor** — scale and placements done. All 18 sample characters assigned.
 - **All other stats** — scale structure exists in `calibrationData.js` but character placements not yet done.
 
-Next up: **Armor** — calibrate scale anchors, place sample characters, verify `calibrationCurveData` entry.
+Next up: **Healing** — calibrate scale anchors, place sample characters, verify `calibrationCurveData` entry.
 
 Calibration pattern (repeat for each stat):
 

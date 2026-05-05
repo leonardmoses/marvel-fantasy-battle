@@ -79,4 +79,23 @@ export const calibrationCurveData = {
         ],
     },
 
+    'Armor': {
+        yLabel: 'Protective Factor',
+        maxValue: 100,
+        formatGridLabel: (val) => `${val}x`,
+        note: 'Perfect parabola: y = score² · Measures inherent body/power durability only — removable gear excluded · Score 10 = survives direct Thor/Hulk-tier hits; only telepathy or specific magic bypasses it',
+        points: [
+            { score: 1,  value: 1,   display: '1×',   char: 'Nick Fury'  },
+            { score: 2,  value: 4,   display: '4×',   char: 'Cyclops'    },
+            { score: 3,  value: 9,   display: '9×',   char: 'Cap'        },
+            { score: 4,  value: 16,  display: '16×',  char: 'Beast'      },
+            { score: 5,  value: 25,  display: '25×',  char: 'Sabretooth' },
+            { score: 6,  value: 36,  display: '36×',  char: null         },
+            { score: 7,  value: 49,  display: '49×',  char: 'Wolverine'  },
+            { score: 8,  value: 64,  display: '64×',  char: 'Apocalypse' },
+            { score: 9,  value: 81,  display: '81×',  char: 'Thor'       },
+            { score: 10, value: 100, display: '100×', char: 'Juggernaut' },
+        ],
+    },
+
 }
