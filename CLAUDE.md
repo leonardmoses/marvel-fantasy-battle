@@ -1,4 +1,4 @@
-# Marvel Fantasy Battle — Claude Context
+# Marvel Fantasy Draft — Claude Context
 
 This file is auto-loaded by Claude Code at the start of every session. It contains everything needed to continue work on this project without re-explanation.
 

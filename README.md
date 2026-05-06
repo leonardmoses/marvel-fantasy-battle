@@ -1,7 +1,7 @@
-## Title: **Marvel Fantasy Battle**
+## Title: **Marvel Fantasy Draft**
 
 **Description:**
-    Marvel Fantasy Battle will be an exciting web application that allows you to create your dream team and see how they fare against another worthy team.
+    Marvel Fantasy Draft will be an exciting web application that allows you to create your dream team and see how they fare against another worthy team.
 
 **Technologies Used:**
     React.js and TailwindCSS for styling.

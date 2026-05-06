@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Marvel Fantasy Battle",
+  title: "Marvel Fantasy Draft",
   description: "Create your dream Marvel team and battle it out!",
 };
 

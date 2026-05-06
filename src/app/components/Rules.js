@@ -10,9 +10,9 @@ const Rules = ({ setShowRules }) => {
             <h1 className="bg-ThemeB2 text-white text-lg font-medium rounded-sm text-center mb-5">Rules</h1>
 
             {/* Overview */}
-            <h2 className="text-base font-bold text-ThemeB2 uppercase tracking-wide mb-2">What Is Marvel Fantasy Battle?</h2>
+            <h2 className="text-base font-bold text-ThemeB2 uppercase tracking-wide mb-2">What Is Marvel Fantasy Draft?</h2>
             <p className="text-sm text-gray-700 mb-3">
-                Marvel Fantasy Battle is a head-to-head team strategy game inspired by fantasy sports. Two players each assemble a roster of Marvel characters — heroes, villains, and everyone in between — and pit their teams against each other in a simulated battle. The goal is simple: build the most powerful, synergistic team you can within the rules, then outlast your opponent round by round to claim victory.
+                Marvel Fantasy Draft is a head-to-head team strategy game inspired by fantasy sports. Two players each assemble a roster of Marvel characters — heroes, villains, and everyone in between — and pit their teams against each other in a simulated battle. The goal is simple: build the most powerful, synergistic team you can within the rules, then outlast your opponent round by round to claim victory.
             </p>
             <p className="text-sm text-gray-700 mb-6">
                 Every character is rated across 25 distinct stat categories covering physical combat, ranged attacks, durability, mobility, psychic ability, elemental power, and more. Your job as a manager is to know your roster, understand how your characters complement each other, and exploit the weaknesses of whoever your opponent puts on the field.

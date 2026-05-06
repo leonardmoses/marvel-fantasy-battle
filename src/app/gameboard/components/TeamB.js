@@ -60,7 +60,7 @@ const TeamBForm = ({ DraftValue }) => {
             <div className="flex-grow space-y-4">
                 <div>
                     <label htmlFor="item" className="block text-sm font-medium text-gray-700">
-                        Team A
+                        Team B
                     </label>
                     <select
                         id="item"
