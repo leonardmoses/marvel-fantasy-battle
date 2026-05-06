@@ -25,12 +25,12 @@ const MarvelFantasyBattleHome = () => {
           <Link href="./gameboard">
             <h3 className="text-white text-center text-2xl hover:text-MarvelRed active:text-Secondary animate-pulse hover:animate-grow">Enter</h3>
           </Link>
-          <h3
+          {/* <h3
             className="text-white w-fit text-center text-2xl mx-auto cursor-pointer hover:text-MarvelRed active:text-Secondary animate-pulse hover:animate-grow"
             onClick={() => { setModalLoginIsOpen(true); }}
           >
             Login
-          </h3>
+          </h3> */}
 
 
           {modalLoginIsOpen && (
