@@ -140,23 +140,23 @@ export const calibrationData = [
         category: "Quickness",
         fullName: "Quickness",
         group: "Mobility",
-        description: "Physical attack rate and combat speed — measured in physical strikes (punches, kicks, claws, melee blows) per second. Does NOT measure energy attack frequency (optic beams, repulsors, lightning, etc.) — those are governed by Proj Power. Dual value: offensive (lands more hits per exchange) and defensive (harder to hit and evade). Characters with Teleportation receive 0 — mutually exclusive stats. Scale is 0–10 with one ceiling breaker (Quicksilver).",
+        description: "Physical attack rate per second — measured in physical strikes (punches, kicks, claws, melee blows). Does NOT measure energy attack frequency (optic beams, repulsors, lightning, etc.) — those are governed by Proj Power. Dual value: offensive (lands more hits per exchange) and defensive (harder to hit and evade). Characters with Teleportation receive 0 — mutually exclusive stats. Scale is 0–10 with one ceiling breaker (Quicksilver). Each score step = +0.5 strikes/sec.",
         extraColumns: [
-            { field: 'atkRate', headerName: 'Physical Attacks / Sec', width: 210 }
+            { field: 'atkRate', headerName: 'Strikes / Second', width: 180 }
         ],
         anchors: [
-            { id: 0,  rating: 0,  atkRate: "—",          description: "Teleportation characters only — mutually exclusive with Quickness",                                                      examples: "Nightcrawler, Magik, Spot" },
-            { id: 1,  rating: 1,  atkRate: "~1/sec",    description: "Base human — one deliberate strike per second; slow, telegraphed, limited agility",                                      examples: "Juggernaut" },
-            { id: 2,  rating: 2,  atkRate: "~2/sec",    description: "Fast human — peak-conditioned non-specialist; basic combat tempo, no superhuman enhancement",                            examples: "Nick Fury" },
-            { id: 3,  rating: 3,  atkRate: "~3/sec",    description: "Base mutant — mutant physiology edges above peak human; roughly world-class human fighter territory",                    examples: "Cyclops, Storm, Magneto" },
-            { id: 4,  rating: 4,  atkRate: "~5/sec",    description: "Trained/conditioned — elite human conditioning or low-level mutation with a combat speed focus",                         examples: "Black Widow" },
-            { id: 5,  rating: 5,  atkRate: "~7/sec",    description: "Enhanced human — super-serum or mutation pushes clearly past any human limit",                                           examples: "Captain America, Rhino" },
-            { id: 6,  rating: 6,  atkRate: "~9/sec",    description: "Very fast mutant — feral agility with enhanced reflexes and burst strike rate as a defining trait",                      examples: "Beast, Wolverine" },
-            { id: 7,  rating: 7,  atkRate: "~12/sec",   description: "Elite superhuman — Nightcrawler-tier combat tempo (calibration anchor; Nightcrawler himself scores 0)",                 examples: "Sabretooth" },
-            { id: 8,  rating: 8,  atkRate: "~15/sec",   description: "Peak superhuman — spider-sense and mutation-enhanced reflexes produce a near-blur attack rate",                          examples: "Spider-Man" },
-            { id: 9,  rating: 9,  atkRate: "~18/sec",   description: "Near-ceiling — divine or cosmic-tier physiology; strikes land faster than most opponents can track",                     examples: "Thor" },
-            { id: 10, rating: 10, atkRate: "~20/sec",   description: "Standard ceiling — fastest non-Quicksilver combatant; twenty physical strikes per second",                              examples: "Gladiator" },
-            { id: 11, rating: 50, atkRate: "500+/sec",  description: "Ceiling breaker — categorically different league; attack rate is effectively infinite relative to any score-10 opponent", examples: "Quicksilver" },
+            { id: 0,  rating: 0,  atkRate: "—",        description: "Teleportation characters only — mutually exclusive with Quickness",                                                      examples: "Nightcrawler, Magik, Spot" },
+            { id: 1,  rating: 1,  atkRate: "0.5/sec",  description: "Base human/brute — one strike every 2 seconds; slow, telegraphed, limited agility",                                         examples: "Juggernaut, Rhino" },
+            { id: 2,  rating: 2,  atkRate: "0.7/sec",  description: "Fast human — peak-conditioned non-specialist; basic combat tempo, no superhuman enhancement",                            examples: "Nick Fury" },
+            { id: 3,  rating: 3,  atkRate: "1.0/sec",  description: "Base mutant — mutant physiology edges above peak human; roughly world-class human fighter territory",                    examples: "Cyclops, Storm, Magneto" },
+            { id: 4,  rating: 4,  atkRate: "1.5/sec",  description: "Trained/conditioned — elite human conditioning or low-level mutation with a combat speed focus",                         examples: "Black Widow" },
+            { id: 5,  rating: 5,  atkRate: "2.1/sec",  description: "Enhanced human — super-serum or mutation pushes clearly past any human limit",                                           examples: "Captain America" },
+            { id: 6,  rating: 6,  atkRate: "2.8/sec",  description: "Very fast mutant / enhanced combatant — feral agility with enhanced reflexes and burst strike rate as a defining trait", examples: "Beast, Sabretooth, Thor" },
+            { id: 7,  rating: 7,  atkRate: "3.6/sec",  description: "Elite superhuman — Nightcrawler-tier combat tempo (calibration anchor; Nightcrawler himself scores 0)",                 examples: "—" },
+            { id: 8,  rating: 8,  atkRate: "4.5/sec",  description: "Near-ceiling physical — combat instincts and mutation push strike rate beyond divine or feral tiers",                    examples: "Wolverine" },
+            { id: 9,  rating: 9,  atkRate: "5.5/sec",  description: "Peak superhuman — spider-sense and mutation-enhanced reflexes produce a near-blur attack rate",                          examples: "Spider-Man" },
+            { id: 10, rating: 10, atkRate: "6.6/sec",  description: "Standard ceiling — fastest non-Quicksilver combatant",                                                                   examples: "Gladiator" },
+            { id: 11, rating: 50, atkRate: "500+/sec", description: "Ceiling breaker — categorically different league; attack rate is effectively infinite relative to any score-10 opponent", examples: "Quicksilver" },
         ]
     },
     {
