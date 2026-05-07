@@ -17,19 +17,19 @@ const PowerGrid = ({ DraftValue, characters, setShowPowerGrid }) => {
     }));
 
     return (
-        <main className='fixed w-11/12 bg-white left-1/2 -translate-x-1/2 top-1/3 -translate-y-1/3 px-10 pb-10 pt-3'>
-            <div className='flex w-full pb-2'>
+        <main className='fixed w-11/12 bg-white left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 px-10 pb-6 pt-3 rounded-md shadow-2xl flex flex-col max-h-[85vh]'>
+            <div className='flex w-full pb-2 items-center'>
+                <h1 className='bg-ThemeB2 text-center rounded-t-sm flex-1'>Power Grid</h1>
                 <ButtonClose setShowPowerGrid={setShowPowerGrid} />
             </div>
-            <div>
-                <h1 className='bg-ThemeB2 text-center rounded-t-sm'>Power Grid</h1>
+            <div className='flex-1 overflow-hidden min-h-0'>
+                <DataGrid
+                    rows={rows}
+                    columns={columns}
+                    pageSize={5}
+                    rowsPerPageOptions={[5, 10]}
+                />
             </div>
-            <DataGrid
-                rows={rows}
-                columns={columns}
-                pageSize={5}
-                rowsPerPageOptions={[5, 10]}
-            />
         </main>
     );
 }
