@@ -138,7 +138,7 @@ const CalibrationCurve = ({ config }) => {
             </svg>
 
             {/* Y-axis zoom slider */}
-            <div className="flex items-center gap-3 px-6 mt-2 mb-1">
+            <div className="flex items-center gap-2 sm:gap-3 px-2 sm:px-6 mt-2 mb-1">
                 <span className="text-xs text-gray-400 whitespace-nowrap">Zoom Y</span>
                 <input
                     type="range"
@@ -149,7 +149,7 @@ const CalibrationCurve = ({ config }) => {
                     onChange={e => setZoomMax(Number(e.target.value))}
                     className="flex-1 accent-red-600"
                 />
-                <span className="text-xs text-gray-400 whitespace-nowrap w-20 text-right">
+                <span className="text-xs text-gray-400 whitespace-nowrap w-16 sm:w-20 text-right">
                     {config.formatGridLabel(zoomMax)}
                 </span>
             </div>

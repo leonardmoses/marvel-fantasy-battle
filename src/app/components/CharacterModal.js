@@ -10,12 +10,11 @@ const CharacterModal = ({ character, onClose }) => {
             <div className="absolute inset-0 bg-black/65" onClick={onClose} />
 
             {/* Modal */}
-            <div className="relative bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden"
-                style={{ width: '85vw', height: '85vh' }}>
+            <div className="relative bg-white rounded-lg shadow-2xl flex flex-col overflow-hidden w-[95vw] h-[92vh] sm:w-[85vw] sm:h-[85vh]">
 
                 {/* Header */}
-                <div className="flex-shrink-0 bg-MarvelBlack px-6 py-3 flex items-center justify-between">
-                    <h2 className="text-white text-lg font-bold tracking-wide uppercase">
+                <div className="flex-shrink-0 bg-MarvelBlack px-4 sm:px-6 py-3 flex items-center justify-between">
+                    <h2 className="text-white text-base sm:text-lg font-bold tracking-wide uppercase">
                         {character.Character}
                     </h2>
                     <button
@@ -27,16 +26,19 @@ const CharacterModal = ({ character, onClose }) => {
                     </button>
                 </div>
 
-                {/* Body */}
-                <div className="flex flex-1 min-h-0">
+                {/* Body — stacked on mobile, side-by-side on md+ */}
+                <div className="flex flex-col md:flex-row flex-1 min-h-0">
 
-                    {/* Spider chart — 75% width */}
-                    <div className="flex items-center justify-center p-6" style={{ width: '75%' }}>
+                    {/* Spider chart — top on mobile (48% height), left 75% on desktop */}
+                    <div className="flex items-center justify-center p-3 sm:p-6 flex-[0_0_48%] md:flex-none md:w-[75%]">
                         <SpiderChart character={character} />
                     </div>
 
-                    {/* Axis breakdown — 25% width */}
-                    <div className="border-l border-gray-100 overflow-y-auto p-4 space-y-3" style={{ width: '25%' }}>
+                    {/* Axis breakdown — bottom scrollable on mobile, right 25% on desktop */}
+                    <div
+                        className="border-t md:border-t-0 md:border-l border-gray-100 overflow-y-auto p-4 space-y-3 flex-1 md:flex-none md:w-[25%]"
+                        style={{ WebkitOverflowScrolling: 'touch' }}
+                    >
                         {axes.map((axis) => (
                             <div key={axis.label}>
                                 <div className="flex items-center justify-between mb-1">
