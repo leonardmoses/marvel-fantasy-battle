@@ -48,7 +48,9 @@ A fantasy sports-style Marvel character team drafting and battle game. Two playe
 - `src/app/gameboard/components/TeamB.js` — Team B draft form. **Known bug: label text says "Team A" instead of "Team B".**
 - `src/app/components/LayoutGeneral.js` — Gameboard layout wrapper (Marvel logo + dice image)
 - `src/app/components/Rules.js` — Rules modal
-- `src/app/components/PowerGrid.js` — Power Grid modal (MUI DataGrid, stats only — no DraftValue column)
+- `src/app/components/PowerGrid.js` — Power Grid modal (MUI DataGrid, stats only — no DraftValue column). Character names are clickable links that open the CharacterModal.
+- `src/app/components/SpiderChart.js` — Pure SVG 6-axis radar chart. Exports `AXIS_GROUPS` (the 6 group definitions) and `computeAxes(character)` (returns axis scores). Ceiling breakers capped at 10 for display. No external chart library.
+- `src/app/components/CharacterModal.js` — Modal triggered by clicking a character name in the Power Grid. Shows the spider chart (75% width) alongside a scrollable axis breakdown panel (25% width) with per-axis scores, mini bars, and raw component stat values. Modal is 85vw × 85vh, z-50.
 - `src/app/components/CalibrationGrid.js` — Calibration modal (sidebar nav + DataGrid + optional curve toggle)
 - `src/app/components/CalibrationCurve.js` — Pure SVG chart (no external chart lib). VW=840, VH=580.
 - `src/app/components/ModalBackdrop.js` — Shared dark backdrop for Rules/PowerGrid/Calibration modals
@@ -637,6 +639,39 @@ Rosters are locked after the draft — no substitutions mid-match.
 - **Duplication (Multiple Man)** — Too character-specific for a whole column.
 - **Sonic/Sound (Banshee, Siryn)** — Screams function as projectiles; Proj Power/Accuracy covers this.
 - **Size Manipulation** — Deferred with Pym particle characters.
+
+---
+
+## Spider Chart
+
+Each character in the Power Grid has a clickable name that opens a modal with a 6-axis radar (spider) chart summarising their power profile.
+
+### 6 Axes and component stats
+
+| Axis | Component stats |
+| ---- | --------------- |
+| **Melee** | Melee Strength, H2H Skill |
+| **Ranged** | Proj Power, Proj Effective Range |
+| **Mobility** | Quickness, Flight Spd, Teleportation |
+| **Durability** | Armor, Healing, Absorption |
+| **Elem/Psi/Forces** | Telekinesis, Telepathy, Magnetism, Magic Cast, Sky Manip, Water Manip, Cold Manip, Heat Manip |
+| **Tactical** | Hunting/Tracking, Leadership, Stealth/Deception, Shield, Telepath Resist, Magic Resist |
+
+**Has Metal** is excluded — it is a vulnerability stat, not a capability.
+
+### Axis score formula — PLACEHOLDER
+
+Axis scores are currently computed as a **plain average of component stats**, with each stat capped at 10 before averaging (ceiling breakers like Hulk's Melee Strength 20 are capped at 10 for display purposes).
+
+**This is intentionally a placeholder.** The real formulas involve stat weighting and interaction logic. Example: Melee axis = Melee Strength + (H2H Skill as a multiplier), not a simple average. Weighting formulas will be designed once all 25 stats are fully calibrated and all sample characters have scores. The function to update is `computeAxes()` in `src/app/components/SpiderChart.js`.
+
+### Chart implementation notes
+
+- Pure SVG, no external chart library. ViewBox 420×388.
+- 6 axes at 60° intervals starting from top (Melee at 12 o'clock, clockwise).
+- 5 grid rings at scores 2/4/6/8/10. Score labels rendered on the bottom-right spoke.
+- Data polygon: red fill (15% opacity), 1px red stroke, no dots.
+- Ceiling breakers are capped at 10 for chart rendering; raw values are shown in the breakdown panel with a `*` marker.
 
 ---
 
