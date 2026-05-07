@@ -118,6 +118,44 @@ export const calibrationCurveData = {
         ],
     },
 
+    'Flight Speed': {
+        yLabel: 'Speed (mph)',
+        maxValue: 2500,
+        formatGridLabel: (val) => val >= 1000 ? `${(val / 1000).toFixed(1).replace('.0', '')}k` : `${val}`,
+        note: 'Curve: y ≈ 23 × score² · Score 10 = Rogue (~2,300 mph / Mach 3, Carol Danvers absorption) · Gladiator is a ceiling breaker — rank TBD, excluded from graph · Score 0 = non-fliers (not plotted)',
+        points: [
+            { score: 1,  value: 23,   display: '~25 mph',     char: null         },
+            { score: 2,  value: 92,   display: '~90 mph',     char: 'Apocalypse' },
+            { score: 3,  value: 207,  display: '~200 mph',    char: 'Magneto'    },
+            { score: 4,  value: 368,  display: '~370 mph',    char: 'Storm'      },
+            { score: 5,  value: 575,  display: '~575 mph',    char: null         },
+            { score: 6,  value: 828,  display: 'Mach 1',      char: 'Iron Man'   },
+            { score: 7,  value: 1127, display: 'Mach 1.5',    char: 'Thor'       },
+            { score: 8,  value: 1472, display: 'Mach 2',      char: null         },
+            { score: 9,  value: 1863, display: 'Mach 2.4',    char: null         },
+            { score: 10, value: 2300, display: 'Mach 3',      char: 'Rogue'      },
+        ],
+    },
+
+    'Hunting/Tracking': {
+        yLabel: 'Detection Range',
+        maxValue: 132000,
+        formatGridLabel: (val) => val >= 5280 ? `${(val / 5280).toFixed(1).replace('.0', '')} mi` : `${val} ft`,
+        note: 'Y-axis = maximum active detection range in open conditions · Score 10 = Iron Man/JARVIS (~25 mi sensor suite) · Score 8 = Wolverine (~4 mi biological ceiling) · Ceiling breaker: Telepaths (score 20, ~1,000 mi+) — mind-detection transcends physical senses; excluded from graph',
+        points: [
+            { score: 1,  value: 30,     display: '~30 ft',    char: 'Colossus'   },
+            { score: 2,  value: 100,    display: '~100 ft',   char: 'Nick Fury'  },
+            { score: 3,  value: 300,    display: '~300 ft',   char: 'Cap'        },
+            { score: 4,  value: 1000,   display: '~1,000 ft', char: 'Magneto'    },
+            { score: 5,  value: 2640,   display: '~0.5 mi',   char: 'Beast'      },
+            { score: 6,  value: 5280,   display: '~1 mi',     char: 'Spider-Man' },
+            { score: 7,  value: 10560,  display: '~2 mi',     char: 'Sabretooth' },
+            { score: 8,  value: 21120,  display: '~4 mi',     char: 'Wolverine'  },
+            { score: 9,  value: 52800,  display: '~10 mi',    char: 'Gladiator'  },
+            { score: 10, value: 132000, display: '~25 mi',    char: 'Iron Man'   },
+        ],
+    },
+
     'Quickness': {
         yLabel: 'Strikes / sec',
         maxValue: 7,

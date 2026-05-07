@@ -392,14 +392,62 @@ Measured in **physical strikes per second** (punches, kicks, claws, melee blows)
 - **Quicksilver at 50** — ceiling breaker. So far beyond the 1–10 scale that he's untouchable in open combat. Excluded from the curve graph (X-axis capped at 10).
 
 **8. Flight Speed**
-Airborne movement speed, rated 1–10. 0 = cannot fly. Same dual offensive/defensive value as Quickness but amplified — 3D airspace makes targeting exponentially harder. Also confers high-ground offensive advantage. Future game logic will formalize this.
+Airborne movement speed. 0 = cannot fly. Same dual offensive/defensive value as Quickness but amplified — 3D airspace makes targeting exponentially harder. Also confers high-ground offensive advantage. Curve: y ≈ 23 × score² (MPH). Score 10 = ~2,300 mph (Mach 3), anchored to Rogue (Carol Danvers absorption). Ceiling breakers possible (Gladiator rank TBD).
+
+**Finalized character placements (18 sample roster):**
+
+| Score | Characters |
+| ----- | ---------- |
+| 0 | Nick Fury, Black Widow, Captain America, Spider-Man, Hulk, Wolverine, Sabretooth, Beast, Rhino, Colossus, Cyclops, Juggernaut |
+| 2 | Apocalypse |
+| 3 | Magneto |
+| 4 | Storm |
+| 6 | Iron Man |
+| 7 | Thor |
 
 ---
 
 ### Tactical / Support
 
 **9. Hunting/Tracking**
-Ability to locate, track, and pursue targets — or evade enemies. Covers enhanced senses (smell, sight, hearing), telepathic detection, magnetic sensing (iron in blood), and learned skills. Natural counter to Stealth/Deception.
+Ability to locate, track, and pursue targets — or evade enemies. Covers enhanced senses (smell, sight, hearing), magnetic sensing (iron in blood), proximity threat detection, and advanced technology. Natural counter to Stealth/Deception. **Key principle: technology peaks above biological at the top of the scale — Iron Man/JARVIS (multi-spectrum AI scanning) scores 10, above Wolverine's biological peak at 8.**
+
+**Finalized scale:**
+
+Measured as maximum active detection range — how far a character can detect a nearby target regardless of method (smell, training, tech, magnetic sense, etc.). Technology peaks above biological at the top. Ceiling breaker: all telepaths receive score 20 automatically — mind-detection transcends physical senses.
+
+| Score | Detection Range | Description | Sample Characters |
+| ----- | --------------- | ----------- | ----------------- |
+| 0 | — | No meaningful tracking — responds to direct sight/sound only | Juggernaut, Rhino |
+| 1 | ~30 ft | Follows only obvious immediate evidence | Colossus |
+| 2 | ~100 ft | Reads terrain and environmental signs; standard trained field operative | Nick Fury, Cyclops |
+| 3 | ~300 ft | Human-level skill with slight biological enhancement | Black Widow, Captain America, Thor |
+| 4 | ~1,000 ft | Unique non-biological sense — detects iron in blood and electromagnetic disruptions | Magneto, Storm |
+| 5 | ~0.5 mi | Mutation provides superhuman smell or hearing | Beast, Hulk |
+| 6 | ~1 mi | Near-constant threat detection via spider physiology | Spider-Man |
+| 7 | ~2 mi | Elite feral senses — low end of apex predator tracking | Sabretooth |
+| 8 | ~4 mi | Peak feral / Celestial enhancement — high end of biological elite | Wolverine, Apocalypse |
+| 9 | ~10 mi | Superhuman biology above Earth-based evolution | Gladiator |
+| 10 | ~25 mi | Standard ceiling — AI-assisted multi-spectrum scanning | Iron Man |
+| 20 | ~1,000 mi+ | Ceiling breaker — telepathic mind-detection; range limited only by the telepath's power | Professor X, Jean Grey |
+
+**Finalized character placements (18 sample roster):**
+
+| Score | Characters |
+| ----- | ---------- |
+| 0 | Juggernaut, Rhino |
+| 1 | Colossus |
+| 2 | Nick Fury, Cyclops |
+| 3 | Black Widow, Captain America, Thor |
+| 4 | Magneto, Storm |
+| 5 | Beast, Hulk |
+| 6 | Spider-Man |
+| 7 | Sabretooth |
+| 8 | Wolverine, Apocalypse |
+| 9 | Gladiator |
+| 10 | Iron Man |
+
+**Calibration curve:** Y-axis = detection range in feet (formatted as miles above 5,280 ft). Wolverine (score 8) = 4 miles biological ceiling. Iron Man (score 10) = 25 miles — JARVIS sensor suite. Ceiling breaker: Telepaths (score 20, ~1,000 mi+) — mind-detection transcends physical senses; excluded from graph.
 
 **10. Leadership**
 Ability to lead and coordinate a team, boosting overall effectiveness. No negative values — lone wolves operate independently rather than dragging the team down.
@@ -617,9 +665,11 @@ Stat calibration is in progress. Current state:
 - **Armor** — scale and placements done. All 18 sample characters assigned.
 - **Healing** — scale and placements done. All 18 sample characters assigned.
 - **Quickness** — scale and placements done. All 18 sample characters assigned. Quicksilver is ceiling breaker at 50.
+- **Flight Speed** — scale and placements done. Curve: y ≈ 23 × score² (MPH). Score 10 = Rogue (Carol Danvers, Mach 3). Fliers in the 18 sample: Apocalypse (2), Magneto (3), Storm (4), Iron Man (6), Thor (7). Gladiator is a ceiling breaker — rank TBD.
+- **Hunting/Tracking** — scale and placements done. All 18 sample characters assigned. Technology (Iron Man = 10) peaks above biological elite (Wolverine = 8). Calibration curve uses detection range in feet (score 10 = 25 mi). Ceiling breaker: Telepaths (score 20, ~1,000 mi+) — excluded from graph.
 - **All other stats** — scale structure exists in `calibrationData.js` but character placements not yet done.
 
-Next up: **Flight Speed** — calibrate scale anchors, place sample characters, add `calibrationCurveData` entry.
+Next up: **Leadership** — calibrate scale anchors, place sample characters.
 
 Calibration pattern (repeat for each stat):
 
