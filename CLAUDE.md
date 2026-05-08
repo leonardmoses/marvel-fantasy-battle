@@ -452,7 +452,49 @@ Measured as maximum active detection range — how far a character can detect a 
 **Calibration curve:** Y-axis = detection range in feet (formatted as miles above 5,280 ft). Wolverine (score 8) = 4 miles biological ceiling. Iron Man (score 10) = 25 miles — JARVIS sensor suite. Ceiling breaker: Telepaths (score 20, ~1,000 mi+) — mind-detection transcends physical senses; excluded from graph.
 
 **10. Leadership**
-Ability to lead and coordinate a team, boosting overall effectiveness. No negative values — lone wolves operate independently rather than dragging the team down.
+Tactical battlefield command and morale — how many fighters a character can effectively coordinate and inspire in live combat. Measures field leadership only, not administrative rank or organizational authority. Most characters score 0–3; scores above 5 are rare. No ceiling breakers — scale is 0–10.
+
+**Finalized scale:**
+
+| Score | Command Capacity | Description |
+| ----- | ---------------- | ----------- |
+| 0 | Solo only | Disruptive or uncoordinated — cannot give or take direction in combat |
+| 1 | 1–2 others | Can issue a simple order to one or two allies in the moment; not sustained leadership |
+| 2 | 3–5 fighters | Directs a small squad with functional orders under pressure; limited tactical range |
+| 3 | 6–10 fighters | Reliable team commander — coordinates multiple roles and adapts mid-fight |
+| 4 | 10–20 fighters | Strong field commander — reads the broader battle, keeps multiple units effective simultaneously |
+| 5 | 20–50 fighters | Platoon-level — subordinates perform above their own ceiling under this command |
+| 6 | 50–150 fighters | Company-level — multi-unit coordination in live combat; commands elite specialist forces |
+| 7 | ~300 fighters | Battalion-scale — commands large engagements with tactical precision; trained specifically for this role |
+| 8 | ~500 fighters | Sustains complex operations across a full battlefield; commands across multiple simultaneous engagements |
+| 9 | ~750 fighters | Army-level — presence alone shifts morale across an entire force |
+| 10 | 1,000+ / Any scale | Legendary — elevates any force regardless of size; the Marvel gold standard of battlefield leadership |
+
+**Finalized character placements (18 sample roster + Professor X):**
+
+| Score | Characters |
+| ----- | ---------- |
+| 0 | Hulk, Rhino, Juggernaut |
+| 1 | Wolverine, Black Widow, Colossus, Spider-Man, Sabretooth |
+| 2 | Beast, Iron Man, Thor |
+| 3 | Apocalypse |
+| 4 | Storm |
+| 5 | Nick Fury |
+| 6 | Gladiator |
+| 7 | Cyclops, Captain America, Magneto |
+| 10 | Professor X *(not in 18-character sample; documented here for reference)* |
+
+**Key calibration decisions and reasoning:**
+
+- **Hulk/Rhino/Juggernaut at 0** — rage-driven, dim, or freight-train forces. Actively counterproductive in a coordinated fight.
+- **Score 1 cluster** — fighters who follow direction but don't give it. Wolverine and Black Widow can direct one or two allies in the moment but are not sustained leaders; Colossus is gentle and deferential; Sabretooth is a lone mercenary; Spider-Man is a solo operator.
+- **Score 2 cluster** — can direct a small squad in a pinch; not their primary role. Beast has enough tactical awareness for a handful of allies; Iron Man prefers solo operation in 90s material; Thor leads by personal example, not coordinated command.
+- **Apocalypse at 3** — commands the Four Horsemen as a coordinated unit of 6–10. Without distinguishing domination from inspiration, his demonstrated ability lands here.
+- **Storm at 4** — Cyclops's reliable field second-in-command; directs a multi-team engagement of 10–20 effectively.
+- **Nick Fury at 5** — SHIELD platoon-level field commander. Directs 20–50 fighters in live operations; makes subordinates perform above their ceiling. His organizational authority is larger but administrative, not battlefield.
+- **Gladiator at 6** — Praetor of the Shi'ar Imperial Guard. Commands an elite specialist force at company scale.
+- **Cyclops, Cap, Magneto at 7** — Cyclops is trained specifically as a field commander; battalion-scale is his design. Cap earns this through WWII and Avengers command. Magneto at his peak commanded Asteroid M refugees and the Brotherhood at battalion edge.
+- **Professor X at 10** — the organizational architect and spiritual leader of the entire mutant resistance movement. His leadership extends beyond any single faction or force size; any group fights better under his vision. Unambiguous ceiling.
 
 ---
 
@@ -702,9 +744,10 @@ Stat calibration is in progress. Current state:
 - **Quickness** — scale and placements done. All 18 sample characters assigned. Quicksilver is ceiling breaker at 50.
 - **Flight Speed** — scale and placements done. Curve: y ≈ 23 × score² (MPH). Score 10 = Rogue (Carol Danvers, Mach 3). Fliers in the 18 sample: Apocalypse (2), Magneto (3), Storm (4), Iron Man (6), Thor (7). Gladiator is a ceiling breaker — rank TBD.
 - **Hunting/Tracking** — scale and placements done. All 18 sample characters assigned. Technology (Iron Man = 10) peaks above biological elite (Wolverine = 8). Calibration curve uses detection range in feet (score 10 = 25 mi). Ceiling breaker: Telepaths (score 20, ~1,000 mi+) — excluded from graph.
+- **Leadership** — scale and placements done. All 18 sample characters assigned. Measured in command capacity (number of fighters effectively led). Cap = 10 (Professor X, "any scale", mapped to 100,000 for display). No ceiling breakers. Calibration curve: exponential, Y-axis = fighters commanded.
 - **All other stats** — scale structure exists in `calibrationData.js` but character placements not yet done.
 
-Next up: **Leadership** — calibrate scale anchors, place sample characters.
+Next up: **Telekinesis** — calibrate scale anchors, place sample characters (rare stat; very few characters have meaningful values).
 
 Calibration pattern (repeat for each stat):
 

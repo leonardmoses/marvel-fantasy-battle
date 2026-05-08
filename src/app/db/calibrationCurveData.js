@@ -156,6 +156,25 @@ export const calibrationCurveData = {
         ],
     },
 
+    'Leadership': {
+        yLabel: 'Command Capacity (Fighters)',
+        maxValue: 1000,
+        formatGridLabel: (val) => `${val}`,
+        note: 'Score 10 (Professor X) = "any scale / legendary" — capped at 1,000 for display · Upper end ratios ~1.5–1.7× per step',
+        points: [
+            { score: 1,  value: 2,    display: '~2',     char: 'Wolverine'  },
+            { score: 2,  value: 5,    display: '~5',     char: 'Beast'      },
+            { score: 3,  value: 10,   display: '~10',    char: 'Storm'      },
+            { score: 4,  value: 20,   display: '~20',    char: 'Nick Fury'  },
+            { score: 5,  value: 50,   display: '~50',    char: null         },
+            { score: 6,  value: 150,  display: '~150',   char: 'Gladiator'  },
+            { score: 7,  value: 300,  display: '~300',   char: 'Cyclops'    },
+            { score: 8,  value: 500,  display: '~500',   char: null         },
+            { score: 9,  value: 750,  display: '~750',   char: null         },
+            { score: 10, value: 1000, display: '1,000+', char: 'Prof X'     },
+        ],
+    },
+
     'Quickness': {
         yLabel: 'Strikes / sec',
         maxValue: 7,

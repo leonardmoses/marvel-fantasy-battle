@@ -208,11 +208,22 @@ export const calibrationData = [
         category: "Leadership",
         fullName: "Leadership",
         group: "Tactical / Support",
-        description: "Ability to lead and coordinate a team, boosting overall team effectiveness. No negatives — lone wolves operate independently.",
+        description: "Tactical battlefield command and morale — how many fighters a character can effectively coordinate and inspire in live combat. Measures field leadership only, not administrative rank or organizational authority. Most characters score 0–3; scores above 5 are rare and meaningful.",
+        extraColumns: [
+            { field: 'capacity', headerName: 'Command Capacity', width: 200 }
+        ],
         anchors: [
-            { id: 0, rating: 0, description: "", examples: "" },
-            { id: 1, rating: 3, description: "Average baseline", examples: "" },
-            { id: 2, rating: 10, description: "Peak", examples: "Professor X, Captain America" },
+            { id: 0,  rating: 0,  capacity: "Solo only",          description: "Disruptive or uncoordinated — cannot give or take direction in combat", examples: "Hulk, Rhino, Juggernaut" },
+            { id: 1,  rating: 1,  capacity: "1–2 others",         description: "Can issue a simple order to one or two allies in the moment; not sustained leadership", examples: "Wolverine, Black Widow, Colossus, Spider-Man, Sabretooth" },
+            { id: 2,  rating: 2,  capacity: "3–5 fighters",       description: "Directs a small squad with functional orders under pressure; limited tactical range", examples: "Beast, Iron Man, Thor" },
+            { id: 3,  rating: 3,  capacity: "6–10 fighters",      description: "Reliable team commander — coordinates multiple roles and adapts mid-fight", examples: "Apocalypse" },
+            { id: 4,  rating: 4,  capacity: "10–20 fighters",     description: "Strong field commander — reads the broader battle and keeps multiple units effective simultaneously", examples: "Storm" },
+            { id: 5,  rating: 5,  capacity: "20–50 fighters",     description: "Platoon-level — subordinates perform above their own ceiling under this command", examples: "Nick Fury" },
+            { id: 6,  rating: 6,  capacity: "50–150 fighters",    description: "Company-level — multi-unit coordination in live combat; commands elite specialist forces", examples: "Gladiator" },
+            { id: 7,  rating: 7,  capacity: "~300 fighters",  description: "Battalion-scale — commands large engagements with tactical precision; trained specifically for this role", examples: "Cyclops, Captain America, Magneto" },
+            { id: 8,  rating: 8,  capacity: "~500 fighters",      description: "Sustains complex operations across a full battlefield; commands across multiple simultaneous engagements", examples: "" },
+            { id: 9,  rating: 9,  capacity: "~750 fighters",      description: "Army-level — presence alone shifts morale across an entire force; commands strategic engagements", examples: "" },
+            { id: 10, rating: 10, capacity: "1,000+ / Any scale", description: "Legendary — elevates any force regardless of size; the Marvel gold standard of battlefield leadership", examples: "Professor X" },
         ]
     },
     {
