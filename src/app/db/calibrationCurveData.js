@@ -175,6 +175,25 @@ export const calibrationCurveData = {
         ],
     },
 
+    'Telekinesis': {
+        yLabel: 'TK Lift (tons)',
+        maxValue: 55,
+        formatGridLabel: (val) => `${val}t`,
+        note: 'Score 2 (~200 lbs) = lighter characters · Score 3 (~500 lbs) = mid-weight characters (Cap, Wolverine, Beast) · Score 4 (~1.5 tons) = armored/dense characters (Colossus, Iron Man, Thor, Rhino, Juggernaut, Hulk) · Score 10 = Jean Grey non-Phoenix (~50 tons) · Ceiling breaker: Phoenix (score 15, ~500 tons) — excluded from graph · Flight Speed score ≥ TK score resists hold · Teleportation bypasses TK holds entirely',
+        points: [
+            { score: 1,  value: 0.025, display: '~50 lbs',    char: null        },
+            { score: 2,  value: 0.1,  display: '~200 lbs',   char: 'Psylocke'  },
+            { score: 3,  value: 0.25, display: '~500 lbs',   char: 'Prof X'    },
+            { score: 4,  value: 1.5,  display: '~1.5 tons',  char: 'Cable'     },
+            { score: 5,  value: 5,    display: '~5 tons',    char: null        },
+            { score: 6,  value: 10,   display: '~10 tons',   char: null        },
+            { score: 7,  value: 16,   display: '~16 tons',   char: null        },
+            { score: 8,  value: 25,   display: '~25 tons',   char: null        },
+            { score: 9,  value: 35,   display: '~35 tons',   char: null        },
+            { score: 10, value: 50,   display: '~50 tons',   char: 'Jean/Rachel' },
+        ],
+    },
+
     'Quickness': {
         yLabel: 'Strikes / sec',
         maxValue: 7,

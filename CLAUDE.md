@@ -501,8 +501,49 @@ Tactical battlefield command and morale — how many fighters a character can ef
 ### Psychic
 
 **11. Telekinesis**
-Move and manipulate objects/people without physical contact. Combines melee intimacy with ranged safety. Can lift opponents off the ground, hold them, throw them, or at extreme levels dismember. **Rare stat — very few characters get meaningful values.** Magneto has some TK but modeled under Magnetism instead.
-*Unique rule: Teleportation is the ONLY counter to a TK grab.*
+Move and manipulate objects/people without physical contact. **Rare stat — very few characters receive meaningful values.** Scored on two dimensions that co-scale: force (telekinetic lifting capacity) and complexity (manipulation resolution from crude push to molecular precision). Higher scores lean more meaningfully into complexity; score 10 = molecular disassembly, score 15 = atomic manipulation.
+
+**Key mechanics:**
+- **Traction rule:** Lifting a character off the ground neutralizes their Melee Strength for escape — no ground contact = no leverage.
+- **Flight Speed counter:** If a character's Flight Speed score ≥ the TK user's score, they can resist the hold (flight thrust overcomes TK force).
+- **Teleportation:** The ONLY escape from a TK grab — bypasses the hold entirely.
+
+**Finalized scale:**
+
+| Score | TK Lifting Force | TK Resolution |
+| ----- | ---------------- | ------------- |
+| 0 | — | No ability |
+| 1 | ~50 lbs | Crude directional push; no meaningful precision |
+| 2 | ~200 lbs | Basic mechanisms — a latch, a lever |
+| 3 | ~500 lbs | Can disassemble simple devices, thread a needle, pick complex locks |
+| 4 | ~1.5 tons | Surgical precision — can extract a bullet or suture tissue telekinetically |
+| 5 | ~5 tons | Multi-object control — redirect shrapnel clouds, intercept multiple projectiles |
+| 6 | ~10 tons | Cellular precision — can stop bleeding or repair damaged tissue from inside the body |
+| 7 | ~16 tons | Intracellular — can penetrate cell interiors, disrupt organelles, coil/uncoil DNA |
+| 8 | ~25 tons | Macromolecular — can isolate and manipulate individual proteins and enzyme chains |
+| 9 | ~35 tons | Sub-cellular — can identify and sever specific nerves, arteries, or biological structures |
+| 10 | ~50 tons | Molecular — can disassemble and reassemble matter at the level of individual chemical bonds |
+| 15 | ~500 tons | Ceiling breaker — atomic manipulation; matter itself is raw material |
+
+**Finalized character placements:**
+
+| Score | Characters |
+| ----- | ---------- |
+| 2 | Psylocke |
+| 3 | Professor X |
+| 4 | Cable *(provisional)* |
+| 10 | Jean Grey, Rachel Summers |
+| 15 | Phoenix *(ceiling breaker — excluded from calibration curve graph)* |
+
+**Key calibration decisions and reasoning:**
+
+- **Jean Grey (non-Phoenix) anchors score 10** at ~50 tons — calibrated against a loaded SR-71 Blackbird / light tank. No non-Phoenix TK user demonstrated 100 tons.
+- **Phoenix at 15 (ceiling breaker)** — categorically different from any biological TK. Excluded from the curve graph (same pattern as Quicksilver in Quickness).
+- **Rachel Summers at 10 alongside Jean Grey** — biologically the same (both Phoenix hosts, same genetics). Equal ceiling for non-Phoenix form.
+- **Psylocke at 2** — uses TK primarily for psychic blade strike enhancement, not sustained lifting or holding. Rarely demonstrated force or precision TK in 90s material.
+- **Professor X at 3** — his TK is limited and secondary to Telepathy; can lift mid-weight characters but not armored/dense ones.
+- **Cable at 4 (provisional)** — Techno-Organic Virus suppresses much of his potential; demonstrated TK reflects a constrained version of what his genetics would otherwise allow.
+- **Calibration curve:** Power curve (not exponential). Y-axis = TK Lift in tons. Phoenix excluded from graph; maxValue = 55 so scores 1–10 fill the chart.
 
 **12. Telepathy**
 Attack, control, or shut down an opponent's mind. Near-instant win condition at any range if it lands. Can cause mind control, unconsciousness, aneurysm, or permanent incapacitation. Professor X near or at ceiling. Jean Grey is high but below Professor X.
@@ -745,9 +786,10 @@ Stat calibration is in progress. Current state:
 - **Flight Speed** — scale and placements done. Curve: y ≈ 23 × score² (MPH). Score 10 = Rogue (Carol Danvers, Mach 3). Fliers in the 18 sample: Apocalypse (2), Magneto (3), Storm (4), Iron Man (6), Thor (7). Gladiator is a ceiling breaker — rank TBD.
 - **Hunting/Tracking** — scale and placements done. All 18 sample characters assigned. Technology (Iron Man = 10) peaks above biological elite (Wolverine = 8). Calibration curve uses detection range in feet (score 10 = 25 mi). Ceiling breaker: Telepaths (score 20, ~1,000 mi+) — excluded from graph.
 - **Leadership** — scale and placements done. All 18 sample characters assigned. Measured in command capacity (number of fighters effectively led). Cap = 10 (Professor X, "any scale", mapped to 100,000 for display). No ceiling breakers. Calibration curve: exponential, Y-axis = fighters commanded.
+- **Telekinesis** — scale and placements done. Rare stat. Two co-scaling dimensions: TK Lifting Force and TK Resolution. Ceiling breaker: Phoenix (15, ~500 tons). Placed characters: Psylocke (2), Professor X (3), Cable (4, provisional), Jean Grey + Rachel Summers (10).
 - **All other stats** — scale structure exists in `calibrationData.js` but character placements not yet done.
 
-Next up: **Telekinesis** — calibrate scale anchors, place sample characters (rare stat; very few characters have meaningful values).
+Next up: **Telepathy** — calibrate scale anchors and place sample characters.
 
 Calibration pattern (repeat for each stat):
 

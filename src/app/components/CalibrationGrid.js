@@ -12,7 +12,7 @@ const CalibrationGrid = ({ setShowCalibration }) => {
     const columns = [
         { field: 'rating', headerName: 'Rating', width: 90 },
         ...(selected.extraColumns || []),
-        { field: 'description', headerName: 'Description', width: 280, flex: 1 },
+        ...(selected.hideDescription ? [] : [{ field: 'description', headerName: 'Description', width: 280, flex: 1 }]),
         { field: 'examples', headerName: 'Example Characters', width: 320, flex: 1 },
     ]
 
