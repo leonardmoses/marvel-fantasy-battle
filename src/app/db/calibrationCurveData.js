@@ -213,6 +213,25 @@ export const calibrationCurveData = {
         ],
     },
 
+    'Telepath Resist': {
+        yLabel: 'Psi-block factor',
+        maxValue: 100,
+        formatGridLabel: (val) => `${val}%`,
+        note: 'Linear scale: TR × 10% — TR=2 (natural cap) blocks 20% of any attack · TR=7 (Magneto helmet) blocks 70% · TR=10 (Juggernaut) = 100% immune',
+        points: [
+            { score: 1,  value: 10,  display: '10%',  char: 'Rhino'      },
+            { score: 2,  value: 20,  display: '20%',  char: 'Cap / Thor' },
+            { score: 3,  value: 30,  display: '30%',  char: null         },
+            { score: 4,  value: 40,  display: '40%',  char: null         },
+            { score: 5,  value: 50,  display: '50%',  char: null         },
+            { score: 6,  value: 60,  display: '60%',  char: null         },
+            { score: 7,  value: 70,  display: '70%',  char: 'Magneto'    },
+            { score: 8,  value: 80,  display: '80%',  char: 'Apocalypse' },
+            { score: 9,  value: 90,  display: '90%',  char: null         },
+            { score: 10, value: 100, display: '100%', char: 'Juggernaut' },
+        ],
+    },
+
     'Quickness': {
         yLabel: 'Strikes / sec',
         maxValue: 7,
