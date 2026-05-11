@@ -232,6 +232,44 @@ export const calibrationCurveData = {
         ],
     },
 
+    'Magnetism': {
+        yLabel: 'Max Controllable Mass (tons)',
+        maxValue: 16000,
+        formatGridLabel: (val) => val >= 1000 ? `${(val / 1000).toFixed(0)}k t` : `${val} t`,
+        note: 'Y-axis = max metal mass controllable simultaneously · Score 10 (Magneto) = ~15,000 tons — Asteroid M / planetary scale · Polaris ≈ score 6 (reference only, not in 18-sample) · Power curve — gaps widen sharply at the high end',
+        points: [
+            { score: 1,  value: 0.05,  display: '~50 kg',      char: null      },
+            { score: 2,  value: 0.2,   display: '~200 kg',     char: null      },
+            { score: 3,  value: 1,     display: '~1 ton',      char: null      },
+            { score: 4,  value: 4,     display: '~4 tons',     char: null      },
+            { score: 5,  value: 12,    display: '~12 tons',    char: 'Polaris' },
+            { score: 6,  value: 40,    display: '~40 tons',    char: null      },
+            { score: 7,  value: 130,   display: '~130 tons',   char: null      },
+            { score: 8,  value: 500,   display: '~500 tons',   char: null      },
+            { score: 9,  value: 2500,  display: '~2,500 tons', char: null      },
+            { score: 10, value: 15000, display: '~15,000 tons',char: 'Magneto' },
+        ],
+    },
+
+    'Has Metal': {
+        yLabel: 'Magnetism Control Factor (%)',
+        maxValue: 100,
+        formatGridLabel: (val) => `${val}%`,
+        note: 'Linear scale: score × 10% = how completely a Magnetism user can dominate this character · Everyone baseline = 1 (blood iron) · Score 10 (Iron Man, Colossus) = total Magnetism control',
+        points: [
+            { score: 1,  value: 10,  display: '10%',  char: 'Storm / Hulk'     },
+            { score: 2,  value: 20,  display: '20%',  char: 'Fury / Magneto'   },
+            { score: 3,  value: 30,  display: '30%',  char: 'Cap'              },
+            { score: 4,  value: 40,  display: '40%',  char: 'Thor / Juggernaut'},
+            { score: 5,  value: 50,  display: '50%',  char: null               },
+            { score: 6,  value: 60,  display: '60%',  char: null               },
+            { score: 7,  value: 70,  display: '70%',  char: 'Wolverine'        },
+            { score: 8,  value: 80,  display: '80%',  char: null               },
+            { score: 9,  value: 90,  display: '90%',  char: null               },
+            { score: 10, value: 100, display: '100%', char: 'Iron Man / Colossus'},
+        ],
+    },
+
     'Quickness': {
         yLabel: 'Strikes / sec',
         maxValue: 7,

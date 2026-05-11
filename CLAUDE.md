@@ -803,9 +803,11 @@ Stat calibration is in progress. Current state:
 - **Telekinesis** — scale and placements done. Rare stat. Two co-scaling dimensions: TK Lifting Force and TK Resolution. Ceiling breaker: Phoenix (15, ~500 tons). Placed characters: Psylocke (2), Professor X (3), Cable (4, provisional), Jean Grey + Rachel Summers (10).
 - **Telepathy** — scale and placements done. Two co-scaling dimensions: Effective Range (curve Y-axis, in feet) and Effect Depth. Scale 0–10. Only Apocalypse gets a non-zero value in the 18 sample (3). Anchors outside the 18: Professor X (10), Jean Grey (7), Emma Frost (6 provisional), Psylocke (4). Calibration curve: Y-axis = range in feet (score 10 = ~5,000 mi). 1:1 rule: telepaths' TR = their T score.
 - **Telepath Resist** — scale and placements done. Universal (nobody gets 0). **Natural willpower caps at 2** — telepathy is intentionally OP against unshielded characters. Psi-block factor extraColumn (TR × 10% — linear scale). Calibration curve present (straight diagonal 10%→100%). Finalized 18-sample placements: Rhino (1, 10%), everyone else without special shielding (2, 20%), Magneto (7, 70% helmet), Apocalypse (8, 80% Celestial), Juggernaut (10, 100% Cyttorak). Tiers 3–6 reserved for partial/technological shielding.
+- **Magnetism** — scale and placements done. Two co-scaling dimensions: magForce (max controllable mass) and magComplexity (operational capability). Scale 0–10, no ceiling breakers. Only Magneto = 10 in 18-sample; all others = 0. Reference: Polaris ≈ 6. Calibration curve: power curve, Y-axis = max controllable mass in tons (score 10 = ~15,000 tons, Asteroid M scale).
+- **Has Metal** — scale and placements done. Universal baseline 1 (blood iron). Linear scale: score × 10% = Magnetism Control Factor. Extra column: metalSource. Calibration curve: linear diagonal, Y-axis = control factor %. 18-sample placements: Storm/Beast/Sabretooth/Hulk/Spider-Man/Rhino (1), Fury/Widow/Cyclops/Magneto (2), Cap (3), Thor/Juggernaut/Gladiator (4), Wolverine/Apocalypse (7), Iron Man/Colossus (10). Note: Magneto flies via EM field generation — no metal needed. His only notable metal is his helmet + minor suit accents.
 - **All other stats** — scale structure exists in `calibrationData.js` but character placements not yet done.
 
-Next up: **Magnetism** or **Has Metal** — calibrate scale anchors and place sample characters.
+Next up: **Magic Cast / Magic Resist**, or an elemental stat (Sky Manip, Water Manip, Cold Manip, Heat Manip), or **Stealth/Deception** — calibrate scale anchors and place sample characters.
 
 Calibration pattern (repeat for each stat):
 
@@ -813,3 +815,9 @@ Calibration pattern (repeat for each stat):
 2. Place sample characters, discuss and push back where needed
 3. Verify `calibrationCurveData.js` entry is consistent (values match displays, effectiveMax correct)
 4. Write finalized ratings into `marvelCharacters.js`
+
+---
+
+## Claude Behavior Rules
+
+- **Never use Bash/terminal commands to edit files.** Always use the Read/Edit/Write tools for all file modifications. This applies everywhere in this project.
