@@ -54,7 +54,7 @@ const CalibrationCurve = ({ config }) => {
                     const y = MT + (1 - val / zoomMax) * PH
                     if (y < MT - 2 || y > bottom + 2) return null
                     return (
-                        <g key={label}>
+                        <g key={val}>
                             <line x1={ML} y1={y} x2={ML + PW} y2={y} stroke="#ebebeb" strokeWidth={1} strokeDasharray="5,5" />
                             <text x={ML - 10} y={y + 4} textAnchor="end" fontSize={12} fill="#c0c0c0">{label}</text>
                         </g>

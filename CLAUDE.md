@@ -546,14 +546,28 @@ Move and manipulate objects/people without physical contact. **Rare stat — ver
 - **Calibration curve:** Power curve (not exponential). Y-axis = TK Lift in tons. Phoenix excluded from graph; maxValue = 55 so scores 1–10 fill the chart.
 
 **12. Telepathy**
-Attack, control, or shut down an opponent's mind. Near-instant win condition at any range if it lands. Can cause mind control, unconsciousness, aneurysm, or permanent incapacitation. Professor X near or at ceiling. Jean Grey is high but below Professor X.
+Attack, control, or shut down an opponent's mind. Two co-scaling dimensions: effective range (Y-axis of calibration curve, in feet) and effect depth (what the telepathy can DO). Scale 0–10. No ceiling breakers — Professor X with Cerebro (global) is a variant of score 10, not a separate tier.
+
+**Resolution mechanic (finalized):**
+1. Sum each team's Telepathy scores → Team T-total
+2. Psi-advantage = max(0, Team A T-total − Team B T-total)
+3. Net psi-damage per opposing character = max(0, psi-advantage − character's individual Telepath Resist)
+4. Total psi-damage to a team = sum of all per-character net damage → feeds into team score multiplier (TBD)
+
+**1:1 rule:** For telepaths, Telepath Resist = Telepathy score. Their presence raises team offense AND their own personal TR simultaneously.
+
+**Finalized character placements (outside 18 sample, for calibration reference):**
+- Professor X: 10 (ceiling)
+- Jean Grey: 7
+- Emma Frost: 6 (provisional)
+- Psylocke: 4 (psi-blade focused, not broadcast telepathy)
 
 **13. Telepath Resist**
-Defense against Telepathy. **Universal — everyone has at least some value based on willpower. Nobody gets 0.**
-- Resolution: **cumulative model** — sum of defending team's Telepath Resist scores vs. attacker's Telepathy stat
-- Team's own telepath adds to the team resistance pool (telepaths shield teammates)
-- Helmets (Magneto, Juggernaut) = hard shielding. Accepted as canon "it just works."
-- Unresolved: whether team telepath adds full Telepathy stat or fraction to resistance pool (risk of making Professor X both offensively and defensively dominant)
+Defense against Telepathy. **Universal — nobody gets 0.** Scored on a single scale with a `Resistance Type` extraColumn (Natural / Willpower / Willpower+Natural / Enhanced willpower / Natural enhanced / Technological / Celestial / Technological+Mystical).
+
+**Resolution:** Net psi-damage per character = max(0, opposing psi-advantage − this character's TR). Helmet wearers (Magneto TR=7, Juggernaut TR=10) absorb the most; low-TR characters absorb the least.
+
+**For telepaths:** TR = Telepathy score (1:1). Stored as such in `marvelCharacters.js`.
 
 ---
 
@@ -657,7 +671,7 @@ Stages reward roster versatility. A team hyper-specialized for one environment i
 Stats interact within your own team:
 
 - **Leadership** — a high Leadership character actively boosts overall team effectiveness
-- **Telepathy (own telepath)** — adds to the team's cumulative Telepath Resistance pool, shielding all teammates
+- **Telepathy (own telepath)** — raises your team's T-total (reducing opposing psi-advantage) and the telepath's own TR = their T score (1:1), contributing to both offense and defense simultaneously
 - **Shield** — covers teammates against physical, projectile, and energy attacks
 - **Hunting/Tracking** — counters an opponent team that relies on Stealth/Deception
 
@@ -698,7 +712,7 @@ Rosters are locked after the draft — no substitutions mid-match.
 |---|---|
 | Teleportation + Quickness | Mutually exclusive — Teleportation characters get 0 Quickness |
 | Teleportation + Telekinesis | Teleportation is the ONLY escape from a TK grab |
-| Telepathy resolution | Cumulative — attacker's Telepathy vs. sum of all defenders' Telepath Resist |
+| Telepathy resolution | Team T-total difference = psi-advantage; each defender takes max(0, psi-advantage − own TR) as net damage. Telepaths' TR = their T score (1:1). |
 | Shield vs. Telepathy | Shield does NOT block Telepathy |
 | Shield vs. Magic | Shield only blocks magic that manifests as a physical projectile |
 | Has Metal vs. Magnetism | High Has Metal = vulnerability against Magneto |
@@ -787,9 +801,11 @@ Stat calibration is in progress. Current state:
 - **Hunting/Tracking** — scale and placements done. All 18 sample characters assigned. Technology (Iron Man = 10) peaks above biological elite (Wolverine = 8). Calibration curve uses detection range in feet (score 10 = 25 mi). Ceiling breaker: Telepaths (score 20, ~1,000 mi+) — excluded from graph.
 - **Leadership** — scale and placements done. All 18 sample characters assigned. Measured in command capacity (number of fighters effectively led). Cap = 10 (Professor X, "any scale", mapped to 100,000 for display). No ceiling breakers. Calibration curve: exponential, Y-axis = fighters commanded.
 - **Telekinesis** — scale and placements done. Rare stat. Two co-scaling dimensions: TK Lifting Force and TK Resolution. Ceiling breaker: Phoenix (15, ~500 tons). Placed characters: Psylocke (2), Professor X (3), Cable (4, provisional), Jean Grey + Rachel Summers (10).
+- **Telepathy** — scale and placements done. Two co-scaling dimensions: Effective Range (curve Y-axis, in feet) and Effect Depth. Scale 0–10. Only Apocalypse gets a non-zero value in the 18 sample (3). Anchors outside the 18: Professor X (10), Jean Grey (7), Emma Frost (6 provisional), Psylocke (4). Calibration curve: Y-axis = range in feet (score 10 = ~5,000 mi). 1:1 rule: telepaths' TR = their T score.
+- **Telepath Resist** — scale and placements done. Universal (nobody gets 0). **Natural willpower caps at 2** — telepathy is intentionally OP against unshielded characters. Resistance Type extraColumn. Finalized 18-sample placements: Rhino (1, base human), everyone else without special shielding (2, natural cap), Magneto (7, helmet), Apocalypse (8, Celestial), Juggernaut (10, Cyttorak). Tiers 3–6 reserved for partial/technological shielding. No calibration curve (ordinal threshold scale).
 - **All other stats** — scale structure exists in `calibrationData.js` but character placements not yet done.
 
-Next up: **Telepathy** — calibrate scale anchors and place sample characters.
+Next up: **Magnetism** or **Has Metal** — calibrate scale anchors and place sample characters.
 
 Calibration pattern (repeat for each stat):
 

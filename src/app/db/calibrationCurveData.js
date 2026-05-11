@@ -194,6 +194,25 @@ export const calibrationCurveData = {
         ],
     },
 
+    'Telepathy': {
+        yLabel: 'Effective Range',
+        maxValue: 26400000,
+        formatGridLabel: (val) => val >= 5280 ? `${(val / 5280).toFixed(0)} mi` : `${val} ft`,
+        note: 'Y-axis = maximum effective telepathic range · Score 10 = Professor X (~5,000 mi, continental) · Score 9 = Jean Grey (~1,000 mi) · Scale 0–10 only — Professor X with Cerebro (global range) is a ceiling variant, not plotted',
+        points: [
+            { score: 1,  value: 30,       display: '~30 ft',     char: null         },
+            { score: 2,  value: 500,      display: '~500 ft',    char: null         },
+            { score: 3,  value: 2640,     display: '~0.5 mi',    char: 'Apocalypse' },
+            { score: 4,  value: 10560,    display: '~2 mi',      char: 'Psylocke'   },
+            { score: 5,  value: 26400,    display: '~5 mi',      char: null         },
+            { score: 6,  value: 132000,   display: '~25 mi',     char: 'Emma Frost' },
+            { score: 7,  value: 528000,   display: '~100 mi',    char: 'Jean Grey'  },
+            { score: 8,  value: 1584000,  display: '~300 mi',    char: null         },
+            { score: 9,  value: 5280000,  display: '~1,000 mi',  char: null         },
+            { score: 10, value: 26400000, display: '~5,000 mi',  char: 'Prof X'     },
+        ],
+    },
+
     'Quickness': {
         yLabel: 'Strikes / sec',
         maxValue: 7,
